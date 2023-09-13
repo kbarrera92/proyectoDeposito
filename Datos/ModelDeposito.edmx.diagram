@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5a8b4409f9d140078f4ad6173fe191d1" Name="Diagram1">
+        <EntityTypeShape EntityType="DEPOSITOModel.ABONOASALDO" Width="1.5" PointX="3.75" PointY="39.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPOSITOModel.AJUSTE" Width="1.5" PointX="0.75" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPOSITOModel.AJUSTEDETA" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPOSITOModel.AREAREPARTO" Width="1.5" PointX="1.5" PointY="43.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPOSITOModel.AUTOVENTA" Width="1.5" PointX="3.75" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPOSITOModel.AUTOVENTADETA2" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPOSITOModel.BITACORAVENTASTRAB" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPOSITOModel.COMPRA" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPOSITOModel.COMPRADETA" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPOSITOModel.CUENTAXPAGAR" Width="1.5" PointX="3" PointY="53.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPOSITOModel.CXPABONO" Width="1.5" PointX="5.25" PointY="53.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPOSITOModel.FORMAPAGO" Width="1.5" PointX="1.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPOSITOModel.HISTORIALENVASE" Width="1.5" PointX="3" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPOSITOModel.MOVIMIENTO" Width="1.5" PointX="6" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPOSITOModel.NOTAS" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPOSITOModel.PEDIDO" Width="1.5" PointX="0.75" PointY="35.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPOSITOModel.PEDIDODETA" Width="1.5" PointX="3" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPOSITOModel.PRODUCTO" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPOSITOModel.PROVEEDOR" Width="1.5" PointX="1.5" PointY="29.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPOSITOModel.REPARTIDOR" Width="1.5" PointX="1.5" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPOSITOModel.SALIDAEFECTIVO" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPOSITOModel.SUCURSAL" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPOSITOModel.TIPOUSUARIO" Width="1.5" PointX="1.5" PointY="50.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPOSITOModel.TRANSACCION" Width="1.5" PointX="3.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPOSITOModel.USUARIO" Width="1.5" PointX="1.5" PointY="47.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPOSITOModel.VENTA" Width="1.5" PointX="5.75" PointY="34.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPOSITOModel.VENTADETA" Width="1.5" PointX="3" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DEPOSITOModel.VENTASCREDITO" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="DEPOSITOModel.FK_AJUSTEDETA_AJUSTE" ManuallyRouted="false" />
+        <AssociationConnector Association="DEPOSITOModel.FK_AJUSTEDETA_PRODUCTO" ManuallyRouted="false" />
+        <AssociationConnector Association="DEPOSITOModel.FK_AUTOVENTA_REPARTIDOR" ManuallyRouted="false" />
+        <AssociationConnector Association="DEPOSITOModel.FK_COMPRA_FORMAPAGO" ManuallyRouted="false" />
+        <AssociationConnector Association="DEPOSITOModel.FK_COMPRA_PROVEEDOR" ManuallyRouted="false" />
+        <AssociationConnector Association="DEPOSITOModel.FK_COMPRADETA_COMPRA" ManuallyRouted="false" />
+        <AssociationConnector Association="DEPOSITOModel.FK_CUENTAXPAGAR_COMPRA" ManuallyRouted="false" />
+        <AssociationConnector Association="DEPOSITOModel.FK_COMPRADETA_PRODUCTO" ManuallyRouted="false" />
+        <AssociationConnector Association="DEPOSITOModel.FK_CXPABONO_CUENTAXPAGAR" ManuallyRouted="false" />
+        <AssociationConnector Association="DEPOSITOModel.FK_HISTORIALENVASE_PRODUCTO" ManuallyRouted="false" />
+        <AssociationConnector Association="DEPOSITOModel.FK_MOVIMIENTO_TRANSACCION" ManuallyRouted="false" />
+        <AssociationConnector Association="DEPOSITOModel.FK_PEDIDO_REPARTIDOR" ManuallyRouted="false" />
+        <AssociationConnector Association="DEPOSITOModel.FK_PEDIDO_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="DEPOSITOModel.FK_PEDIDODETA_PEDIDO" ManuallyRouted="false" />
+        <AssociationConnector Association="DEPOSITOModel.FK_PEDIDODETA_PRODUCTO" ManuallyRouted="false" />
+        <AssociationConnector Association="DEPOSITOModel.FK_VENTADETA_PRODUCTO" ManuallyRouted="false" />
+        <AssociationConnector Association="DEPOSITOModel.FK_VENTA_REPARTIDOR" ManuallyRouted="false" />
+        <AssociationConnector Association="DEPOSITOModel.FK_USUARIO_TIPOUSUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="DEPOSITOModel.FK_VENTA_USUARIO" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DEPOSITOModel.BIT_ABONOSYSALDOS" Width="1.5" PointX="3" PointY="35.375" />
+        <AssociationConnector Association="DEPOSITOModel.FK_BIT_ABONOSYSALDOS_PEDIDO" />
+        <EntityTypeShape EntityType="DEPOSITOModel.CLIENTE" Width="1.5" PointX="3.75" PointY="43.25" />
+        <AssociationConnector Association="DEPOSITOModel.FK_ABONOASALDO_CLIENTE" />
+        <AssociationConnector Association="DEPOSITOModel.FK_CLIENTE_AREAREPARTO" />
+        <AssociationConnector Association="DEPOSITOModel.FK_PEDIDO_CLIENTE" />
+        <EntityTypeShape EntityType="DEPOSITOModel.AUTOVENTADETA" Width="1.75" PointX="6" PointY="16" />
+        <AssociationConnector Association="DEPOSITOModel.FK_AUTOVENTADETA_AUTOVENTA" />
+        <AssociationConnector Association="DEPOSITOModel.FK_AUTOVENTADETA_PRODUCTO" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
