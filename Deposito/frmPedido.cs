@@ -176,9 +176,10 @@ namespace Deposito
             dt = ds.Tables["dtPedido"];
             for (int i = 0; i < dataGridView2.Rows.Count; i++)
             {
+                var descripcion = dataGridView2.Rows[i].Cells[1].Value.ToString() + "(" + dataGridView2.Rows[i].Cells[5].Value.ToString() + ")";
                 DataRow drdesxcli = ds.Tables["dtPedido"].NewRow();
                 drdesxcli["ID"] = i + 1;
-                drdesxcli["DESCRIPCION"] = dataGridView2.Rows[i].Cells[1].Value.ToString() + "(" + dataGridView2.Rows[i].Cells[5].Value.ToString() + ")";
+                drdesxcli["DESCRIPCION"] = descripcion;
                 drdesxcli["CANTIDAD"] = dataGridView2.Rows[i].Cells[2].Value;
                 drdesxcli["PRECIO"] = dataGridView2.Rows[i].Cells[3].Value;
                 drdesxcli["SUBTOTAL"] = dataGridView2.Rows[i].Cells[4].Value.ToString();
@@ -288,6 +289,12 @@ namespace Deposito
 
         private void txtcantidad_KeyDown(object sender, KeyEventArgs e)
         {
+            if (decimal.Parse(txtcantidad.Text) <= 0)
+            {
+                MessageBox.Show("Cantidad invalida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             if (e.KeyCode == Keys.Enter)
             {
                 txtdetsabores.Select();

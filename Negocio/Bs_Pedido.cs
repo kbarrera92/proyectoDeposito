@@ -7,6 +7,8 @@ using Entidad;
 using System.Windows.Forms;
 using System.Data.Entity.Validation;
 using System.Data.Entity;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Negocio
 {
@@ -27,10 +29,10 @@ namespace Negocio
                 }
                 catch (Exception)
                 {
-                    
+
                     throw;
                 }
-                
+
             }
             return status;
         }
@@ -46,7 +48,7 @@ namespace Negocio
                 }
                 catch (Exception)
                 {
-                    
+
                     throw;
                 }
 
@@ -65,7 +67,7 @@ namespace Negocio
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                    
+
                 }
 
             }
@@ -112,7 +114,7 @@ namespace Negocio
                               Cliente = cliente.NOMBRE,
                               Repartidor = rep.NOMBRE == null ? "" : rep.NOMBRE,
                               Total = pedido.TOTAL,
-                              Cobrado = bit.COBRADO                              
+                              Cobrado = bit.COBRADO
                           };
 
                 datagrid.DataSource = lst.ToList();
@@ -176,7 +178,7 @@ namespace Negocio
                                select deta;
 
                 foreach (var item in consulta)
-                {                    
+                {
                     item.CANTIDAD = cant;
                     item.PRECIO = precio;
                     item.SUBTOTAL = subtotal;
@@ -192,8 +194,8 @@ namespace Negocio
             using (DEPOSITOEntities1 db = new DEPOSITOEntities1())
             {
                 var consulta = (from det in db.PEDIDODETA
-                               where det.ID.Equals(id) && det.IDPEDIDO.Equals(pedido)
-                               select det).ToList();
+                                where det.ID.Equals(id) && det.IDPEDIDO.Equals(pedido)
+                                select det).ToList();
 
                 foreach (var item in consulta)
                 {
@@ -226,9 +228,38 @@ namespace Negocio
             catch (Exception e)
             {
                 MessageBox.Show("Error: " + e.Message, "Algo salio mal", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
+
             }
-            
+
+        }
+
+        public static bool BorrarDetallePedidoIndividual(int nped, int deta, int produc, decimal cantidad)
+        {
+            var resp = false;
+            int npedido = nped;
+            int det = deta;
+            int prod = produc;
+            var cant = cantidad;
+            DataTable dt = new DataTable();
+            SqlConnection myConn = new SqlConnection(Utils.ConsultaParametro("CS"));
+            myConn.Open();
+            SqlCommand myCmd = new SqlCommand("sp_borrarDetallePedido", myConn);
+            myCmd.CommandType = CommandType.StoredProcedure;
+            myCmd.Parameters.AddWithValue("IDDET", det);
+            myCmd.Parameters.AddWithValue("IDPED", npedido);
+
+            try
+            {
+                myCmd.ExecuteNonQuery();
+                resp = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hubo un error al eliminar el detalle del pedido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return resp;
+
         }
 
         public static bool borrardetallepedido(int pedido)
@@ -244,12 +275,14 @@ namespace Negocio
 
                     foreach (var item in consulta)
                     {
-                        db.PEDIDODETA.Remove(item);
+                        if (BorrarDetallePedidoIndividual(pedido, item.ID,
+                            item.IDPRODUCTO.GetValueOrDefault(), item.CANTIDAD.GetValueOrDefault()))
+                        {
+                            resp = true;
+                        }
                     }
+                    //db.SaveChanges();
 
-                    db.SaveChanges();
-                    resp = true;
-                    
                 }
             }
             catch (Exception e)

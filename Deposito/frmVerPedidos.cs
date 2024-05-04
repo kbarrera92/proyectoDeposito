@@ -26,10 +26,11 @@ namespace Deposito
             for (int i = 0; i < dataGridView2.Rows.Count; i++)
             {
                 detalles = dataGridView2.Rows[i].Cells[6].Value == null ? "" : dataGridView2.Rows[i].Cells[6].Value.ToString();
+                var descripcion = dataGridView2.Rows[i].Cells[2].Value.ToString() + "("
+                    + detalles + ")";
                 DataRow drdesxcli = ds.Tables["dtPedido"].NewRow();
                 drdesxcli["ID"] = i + 1;
-                drdesxcli["DESCRIPCION"] = dataGridView2.Rows[i].Cells[2].Value.ToString() + "("
-                    + detalles + ")";
+                drdesxcli["DESCRIPCION"] = descripcion;
                 drdesxcli["CANTIDAD"] = dataGridView2.Rows[i].Cells[3].Value;
                 drdesxcli["PRECIO"] = dataGridView2.Rows[i].Cells[4].Value;
                 drdesxcli["SUBTOTAL"] = dataGridView2.Rows[i].Cells[5].Value.ToString();
