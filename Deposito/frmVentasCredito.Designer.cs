@@ -31,6 +31,12 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FECHA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CONCEPTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TOTAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.COBRADA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FECHACOBRO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -40,6 +46,13 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.FECHA,
+            this.CONCEPTO,
+            this.TOTAL,
+            this.COBRADA,
+            this.FECHACOBRO});
             this.dataGridView1.Location = new System.Drawing.Point(13, 35);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -69,6 +82,42 @@
             this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // FECHA
+            // 
+            this.FECHA.HeaderText = "FECHA";
+            this.FECHA.Name = "FECHA";
+            this.FECHA.ReadOnly = true;
+            // 
+            // CONCEPTO
+            // 
+            this.CONCEPTO.HeaderText = "CONCEPTO";
+            this.CONCEPTO.Name = "CONCEPTO";
+            this.CONCEPTO.ReadOnly = true;
+            // 
+            // TOTAL
+            // 
+            this.TOTAL.HeaderText = "TOTAL";
+            this.TOTAL.Name = "TOTAL";
+            this.TOTAL.ReadOnly = true;
+            // 
+            // COBRADA
+            // 
+            this.COBRADA.HeaderText = "COBRADA";
+            this.COBRADA.Name = "COBRADA";
+            this.COBRADA.ReadOnly = true;
+            // 
+            // FECHACOBRO
+            // 
+            this.FECHACOBRO.HeaderText = "FECHACOBRO";
+            this.FECHACOBRO.Name = "FECHACOBRO";
+            this.FECHACOBRO.ReadOnly = true;
+            // 
             // frmVentasCredito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -90,5 +139,11 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FECHA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CONCEPTO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TOTAL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn COBRADA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FECHACOBRO;
     }
 }

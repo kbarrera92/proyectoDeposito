@@ -235,8 +235,13 @@ namespace Deposito
             if  (MessageBox.Show("¿Eliminar este registro?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 int venta = int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                if (Bs_Venta.ValidaVentaCuadrada(venta))
+                {
+                    MessageBox.Show("La venta no se puede eliminar, ya fue cuadrada", "Hubo un error al eliminar la venta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
 
-                if(Bs_Venta.borrardetallesventas(venta))
+                if (Bs_Venta.borrardetallesventas(venta))
                 {
                     if (Bs_Venta.borrarventa(venta))
                     {

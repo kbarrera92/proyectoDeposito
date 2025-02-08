@@ -88,16 +88,26 @@ namespace Negocio
         {
             using (DEPOSITOEntities1 db = new DEPOSITOEntities1())
             {
-                var consulta = db.VENTASCREDITO.Where(x => x.COBRADA == null).Select(x => new
+                var consulta = db.VENTASCREDITO.Select(x => new
                 {
                     x.ID,
                     x.FECHA,
                     x.CONCEPTO,
                     x.TOTAL,
-                    
+                    x.COBRADA,
+                    x.FECHACOBRO
                 });
 
-                dgv.DataSource = consulta.ToList();
+                var lista = consulta.ToList();
+                foreach (var item in lista)
+                {
+                    dgv.Rows.Add(item.ID.ToString(),
+                        item?.FECHA.GetValueOrDefault().ToString(),
+                        item.CONCEPTO.ToString(),
+                        item?.TOTAL.GetValueOrDefault().ToString(),
+                        item?.COBRADA == true ? "Cobrada" : "Sin cobrar",
+                        item?.FECHACOBRO?.ToString() ?? "");
+                }
             }
         }
 
@@ -369,6 +379,27 @@ namespace Negocio
             }
             
 
+        }
+
+        public static bool ValidaVentaCuadrada(int venta)
+        {
+            bool resp = false;
+            try
+            {
+                using (DEPOSITOEntities1 db = new DEPOSITOEntities1())
+                {
+                    var consulta = db.VENTA.Where(p => p.ID == venta).Select(p => p.COBRADO).FirstOrDefault();
+
+                    if (!(consulta is null))
+                        resp = true;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+
+            return resp;
         }
 
         public static bool borrardetallesventas(int venta)
