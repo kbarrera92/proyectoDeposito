@@ -289,15 +289,22 @@ namespace Deposito
 
         private void txtcantidad_KeyDown(object sender, KeyEventArgs e)
         {
-            if (decimal.Parse(txtcantidad.Text) <= 0)
+            try
             {
-                MessageBox.Show("Cantidad invalida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                if (e.KeyCode == Keys.Enter)
+                {
+                    if (decimal.Parse(txtcantidad.Text) <= 0)
+                    {
+                        MessageBox.Show("Cantidad invalida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
 
-            if (e.KeyCode == Keys.Enter)
+                    txtdetsabores.Select();
+                }
+            }
+            catch 
             {
-                txtdetsabores.Select();
+                throw;
             }
         }
 

@@ -262,6 +262,27 @@ namespace Negocio
 
         }
 
+        public static bool Validapedidocuadrado(int pedido)
+        {
+            bool resp = false;
+            try
+            {
+                using (DEPOSITOEntities1 db = new DEPOSITOEntities1())
+                {
+                    var consulta = db.PEDIDO.Where(p => p.ID == pedido).Select(p => p.REPCOBRO).FirstOrDefault();
+
+                    if (!(consulta is null))
+                        resp = true;
+                }
+            }
+            catch
+            {
+                throw;
+            }
+
+            return resp;
+        }
+
         public static bool borrardetallepedido(int pedido)
         {
             bool resp = false;

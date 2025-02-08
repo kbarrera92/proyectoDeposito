@@ -124,6 +124,12 @@ namespace Deposito
         private void btneliminarpedido_Click(object sender, EventArgs e)
         {
             int npedido = int.Parse(txtnpedido.Text);
+            if (Bs_Pedido.Validapedidocuadrado(npedido))
+            {
+                MessageBox.Show("El pedido no se puede eliminar, ya fue cuadrado", "Hubo un error al eliminar el pedido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             if (MessageBox.Show(this, "Desea eliminar este pedido?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 if (Bs_Pedido.borrardetallepedido(npedido))
