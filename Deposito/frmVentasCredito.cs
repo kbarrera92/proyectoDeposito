@@ -30,6 +30,12 @@ namespace Deposito
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.CurrentRow.Cells[4].Value.ToString() == "Cobrada")
+            {
+                MessageBox.Show("La venta ya fue cobrada", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             if (MessageBox.Show("¿Ya cobró esta venta?", "Cambiando", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 if (Negocio.Bs_Venta.cobrarventacredito(int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString())))

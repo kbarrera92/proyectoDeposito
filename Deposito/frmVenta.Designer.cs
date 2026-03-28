@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
@@ -39,6 +39,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.prod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.produc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.obs = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costoactual = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txttotal = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.txtcodpro = new System.Windows.Forms.TextBox();
@@ -60,13 +67,6 @@
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.txtobs = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.prod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.produc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cant = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.obs = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costoactual = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -122,6 +122,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(532, 264);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
             // 
             // txtbuscar
             // 
@@ -131,6 +132,7 @@
             this.txtbuscar.Size = new System.Drawing.Size(532, 23);
             this.txtbuscar.TabIndex = 6;
             this.txtbuscar.TextChanged += new System.EventHandler(this.txtbuscar_TextChanged);
+            this.txtbuscar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbuscar_KeyDown);
             // 
             // label3
             // 
@@ -156,14 +158,14 @@
             // 
             this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.prod,
@@ -180,6 +182,55 @@
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(551, 352);
             this.dataGridView2.TabIndex = 8;
+            // 
+            // prod
+            // 
+            this.prod.HeaderText = "Codigo";
+            this.prod.Name = "prod";
+            this.prod.ReadOnly = true;
+            this.prod.Width = 80;
+            // 
+            // produc
+            // 
+            this.produc.HeaderText = "Producto";
+            this.produc.Name = "produc";
+            this.produc.ReadOnly = true;
+            this.produc.Width = 188;
+            // 
+            // cant
+            // 
+            this.cant.HeaderText = "Cantidad";
+            this.cant.Name = "cant";
+            this.cant.ReadOnly = true;
+            this.cant.Width = 80;
+            // 
+            // precio
+            // 
+            this.precio.HeaderText = "Precio";
+            this.precio.Name = "precio";
+            this.precio.ReadOnly = true;
+            this.precio.Width = 80;
+            // 
+            // subt
+            // 
+            this.subt.HeaderText = "Subtotal";
+            this.subt.Name = "subt";
+            this.subt.ReadOnly = true;
+            this.subt.Width = 80;
+            // 
+            // obs
+            // 
+            this.obs.HeaderText = "Observaciones";
+            this.obs.Name = "obs";
+            this.obs.ReadOnly = true;
+            this.obs.Visible = false;
+            // 
+            // costoactual
+            // 
+            this.costoactual.HeaderText = "Costo";
+            this.costoactual.Name = "costoactual";
+            this.costoactual.ReadOnly = true;
+            this.costoactual.Visible = false;
             // 
             // txttotal
             // 
@@ -385,55 +436,6 @@
             this.label11.Size = new System.Drawing.Size(82, 17);
             this.label11.TabIndex = 27;
             this.label11.Text = "Observac.";
-            // 
-            // prod
-            // 
-            this.prod.HeaderText = "Codigo";
-            this.prod.Name = "prod";
-            this.prod.ReadOnly = true;
-            this.prod.Width = 80;
-            // 
-            // produc
-            // 
-            this.produc.HeaderText = "Producto";
-            this.produc.Name = "produc";
-            this.produc.ReadOnly = true;
-            this.produc.Width = 188;
-            // 
-            // cant
-            // 
-            this.cant.HeaderText = "Cantidad";
-            this.cant.Name = "cant";
-            this.cant.ReadOnly = true;
-            this.cant.Width = 80;
-            // 
-            // precio
-            // 
-            this.precio.HeaderText = "Precio";
-            this.precio.Name = "precio";
-            this.precio.ReadOnly = true;
-            this.precio.Width = 80;
-            // 
-            // subt
-            // 
-            this.subt.HeaderText = "Subtotal";
-            this.subt.Name = "subt";
-            this.subt.ReadOnly = true;
-            this.subt.Width = 80;
-            // 
-            // obs
-            // 
-            this.obs.HeaderText = "Observaciones";
-            this.obs.Name = "obs";
-            this.obs.ReadOnly = true;
-            this.obs.Visible = false;
-            // 
-            // costoactual
-            // 
-            this.costoactual.HeaderText = "Costo";
-            this.costoactual.Name = "costoactual";
-            this.costoactual.ReadOnly = true;
-            this.costoactual.Visible = false;
             // 
             // frmVenta
             // 

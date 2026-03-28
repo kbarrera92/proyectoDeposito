@@ -38,7 +38,7 @@ namespace Deposito
             costo = Convert.ToDecimal(dataGridView1.CurrentRow.Cells[2].Value.ToString());
             txtprecio.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
             txtexistencia.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString();
-            txtprecio.Select();
+            //txtprecio.Select();
         }
 
         private void txtprecio_TextChanged(object sender, EventArgs e)
@@ -295,6 +295,31 @@ namespace Deposito
             if (e.KeyCode == Keys.Enter)
             {
                 btnagregar.PerformClick();
+            }
+        }
+
+        private void txtbuscar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (dataGridView1.Rows.Count > 0)
+                {
+                    dataGridView1.CurrentCell = dataGridView1.Rows[0].Cells[0];
+                    dataGridView1.Focus();
+                }
+            }
+        }
+
+        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtcodpro.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                txtdesc.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                costo = Convert.ToDecimal(dataGridView1.CurrentRow.Cells[2].Value.ToString());
+                txtprecio.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                txtexistencia.Text = dataGridView1.CurrentRow.Cells[6].Value.ToString();
+                txtprecio.Select();
             }
         }
     }

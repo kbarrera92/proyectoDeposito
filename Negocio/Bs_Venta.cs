@@ -96,7 +96,7 @@ namespace Negocio
                     x.TOTAL,
                     x.COBRADA,
                     x.FECHACOBRO
-                });
+                }).OrderBy(x => x.COBRADA);
 
                 var lista = consulta.ToList();
                 foreach (var item in lista)

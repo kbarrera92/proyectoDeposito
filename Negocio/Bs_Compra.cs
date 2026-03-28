@@ -421,6 +421,7 @@ namespace Negocio
                                on cxp.COMPRA equals compra.ID
                                join prov in db.PROVEEDOR
                                on compra.PROVEEDOR equals prov.ID
+                               orderby cxp.ESTADO ascending
                                select new
                                {
                                    cxp.IDCUENTA,

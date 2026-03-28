@@ -56,6 +56,13 @@
             this.btnregistrar = new System.Windows.Forms.Button();
             this.txttotal = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.prod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.produc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detsabores = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.costoactual = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtbuscar = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -64,13 +71,6 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.label14 = new System.Windows.Forms.Label();
             this.txtdetsabores = new System.Windows.Forms.TextBox();
-            this.prod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.produc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cant = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.detsabores = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.costoactual = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -370,90 +370,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(551, 347);
             this.dataGridView2.TabIndex = 29;
             // 
-            // txtbuscar
-            // 
-            this.txtbuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbuscar.Location = new System.Drawing.Point(403, 12);
-            this.txtbuscar.Name = "txtbuscar";
-            this.txtbuscar.Size = new System.Drawing.Size(325, 23);
-            this.txtbuscar.TabIndex = 28;
-            this.txtbuscar.TextChanged += new System.EventHandler(this.txtbuscar_TextChanged);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(271, 14);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(132, 17);
-            this.label11.TabIndex = 27;
-            this.label11.Text = "Buscar producto:";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(274, 41);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(454, 348);
-            this.dataGridView1.TabIndex = 26;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(734, 14);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(148, 17);
-            this.label12.TabIndex = 47;
-            this.label12.Text = "Detalles del pedido";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(771, 476);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(492, 24);
-            this.label13.TabIndex = 48;
-            this.label13.Text = "Deposito Nohemi, Tierras del Pueblo, Mazatenango";
-            // 
-            // printDocument1
-            // 
-            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(271, 510);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(103, 17);
-            this.label14.TabIndex = 49;
-            this.label14.Text = "Det. Sabores";
-            // 
-            // txtdetsabores
-            // 
-            this.txtdetsabores.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtdetsabores.Location = new System.Drawing.Point(377, 510);
-            this.txtdetsabores.Name = "txtdetsabores";
-            this.txtdetsabores.Size = new System.Drawing.Size(352, 23);
-            this.txtdetsabores.TabIndex = 50;
-            this.txtdetsabores.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
-            // 
             // prod
             // 
             this.prod.HeaderText = "Codigo";
@@ -502,6 +418,92 @@
             this.costoactual.Name = "costoactual";
             this.costoactual.ReadOnly = true;
             this.costoactual.Visible = false;
+            // 
+            // txtbuscar
+            // 
+            this.txtbuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtbuscar.Location = new System.Drawing.Point(403, 12);
+            this.txtbuscar.Name = "txtbuscar";
+            this.txtbuscar.Size = new System.Drawing.Size(325, 23);
+            this.txtbuscar.TabIndex = 28;
+            this.txtbuscar.TextChanged += new System.EventHandler(this.txtbuscar_TextChanged);
+            this.txtbuscar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtbuscar_KeyDown);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(271, 14);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(132, 17);
+            this.label11.TabIndex = 27;
+            this.label11.Text = "Buscar producto:";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(274, 41);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(454, 348);
+            this.dataGridView1.TabIndex = 26;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(734, 14);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(148, 17);
+            this.label12.TabIndex = 47;
+            this.label12.Text = "Detalles del pedido";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(771, 476);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(492, 24);
+            this.label13.TabIndex = 48;
+            this.label13.Text = "Deposito Nohemi, Tierras del Pueblo, Mazatenango";
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(271, 510);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(103, 17);
+            this.label14.TabIndex = 49;
+            this.label14.Text = "Det. Sabores";
+            // 
+            // txtdetsabores
+            // 
+            this.txtdetsabores.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtdetsabores.Location = new System.Drawing.Point(377, 510);
+            this.txtdetsabores.Name = "txtdetsabores";
+            this.txtdetsabores.Size = new System.Drawing.Size(352, 23);
+            this.txtdetsabores.TabIndex = 50;
+            this.txtdetsabores.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // frmPedido
             // 
