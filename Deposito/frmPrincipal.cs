@@ -688,5 +688,33 @@ namespace Deposito
             clientes.MdiParent = this;
             clientes.Show();
         }
+
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+            if (Bs_Usuario.usuarioActual == 0)
+            {
+                MessageBox.Show("Debe iniciar sesión", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!Bs_Usuario.isAdmin)
+            {
+                MessageBox.Show("No tiene acceso a este módulo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            foreach (Form f in this.MdiChildren)
+            {
+                if (f is FormProductosStockBajo)
+                {
+                    f.Activate();
+                    return;
+                }
+            }
+
+            FormProductosStockBajo stockbajo = new FormProductosStockBajo();
+            stockbajo.MdiParent = this;
+            stockbajo.Show();
+        }
     }
 }

@@ -76,34 +76,34 @@
             this.toolBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonLogin = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripButtonVenta = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonPedido = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabelUser = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripButtonCompra = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.toolStripButtonLogin = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonVenta = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonPedido = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonCompra = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
-            this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -490,6 +490,15 @@
             this.helpMenu.Size = new System.Drawing.Size(66, 24);
             this.helpMenu.Text = "Ay&uda";
             // 
+            // indexToolStripMenuItem
+            // 
+            this.indexToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("indexToolStripMenuItem.Image")));
+            this.indexToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
+            this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
+            this.indexToolStripMenuItem.Size = new System.Drawing.Size(227, 24);
+            this.indexToolStripMenuItem.Text = "Manual de usuario";
+            this.indexToolStripMenuItem.Click += new System.EventHandler(this.indexToolStripMenuItem_Click);
+            // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
@@ -533,6 +542,17 @@
             this.toolStrip.TabIndex = 1;
             this.toolStrip.Text = "ToolStrip";
             // 
+            // toolStripButtonLogin
+            // 
+            this.toolStripButtonLogin.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.toolStripButtonLogin.Image = global::Deposito.Properties.Resources.App_login_manager_icon;
+            this.toolStripButtonLogin.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonLogin.Name = "toolStripButtonLogin";
+            this.toolStripButtonLogin.Size = new System.Drawing.Size(50, 55);
+            this.toolStripButtonLogin.Text = "Login";
+            this.toolStripButtonLogin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonLogin.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
@@ -550,10 +570,32 @@
             this.toolStripLabel1.Size = new System.Drawing.Size(60, 55);
             this.toolStripLabel1.Text = "Salidas:";
             // 
+            // toolStripButtonVenta
+            // 
+            this.toolStripButtonVenta.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.toolStripButtonVenta.Image = global::Deposito.Properties.Resources.payment_icon;
+            this.toolStripButtonVenta.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonVenta.Name = "toolStripButtonVenta";
+            this.toolStripButtonVenta.Size = new System.Drawing.Size(50, 55);
+            this.toolStripButtonVenta.Text = "Venta";
+            this.toolStripButtonVenta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonVenta.Click += new System.EventHandler(this.toolStripButton1_Click_1);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 58);
+            // 
+            // toolStripButtonPedido
+            // 
+            this.toolStripButtonPedido.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.toolStripButtonPedido.Image = global::Deposito.Properties.Resources.Finance_Purchase_Order_icon;
+            this.toolStripButtonPedido.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonPedido.Name = "toolStripButtonPedido";
+            this.toolStripButtonPedido.Size = new System.Drawing.Size(61, 55);
+            this.toolStripButtonPedido.Text = "Pedido";
+            this.toolStripButtonPedido.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonPedido.Click += new System.EventHandler(this.toolStripButtonPedido_Click);
             // 
             // toolStripLabelUser
             // 
@@ -580,75 +622,6 @@
             this.toolStripLabel2.Size = new System.Drawing.Size(70, 55);
             this.toolStripLabel2.Text = "Entradas:";
             // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 58);
-            // 
-            // toolStripSeparator10
-            // 
-            this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(6, 58);
-            // 
-            // toolStripSeparator11
-            // 
-            this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new System.Drawing.Size(6, 58);
-            // 
-            // toolStripSeparator12
-            // 
-            this.toolStripSeparator12.Name = "toolStripSeparator12";
-            this.toolStripSeparator12.Size = new System.Drawing.Size(6, 58);
-            // 
-            // statusStrip
-            // 
-            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 447);
-            this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(1045, 22);
-            this.statusStrip.TabIndex = 2;
-            this.statusStrip.Text = "StatusStrip";
-            // 
-            // toolStripStatusLabel
-            // 
-            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(42, 17);
-            this.toolStripStatusLabel.Text = "Estado";
-            // 
-            // toolStripButtonLogin
-            // 
-            this.toolStripButtonLogin.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.toolStripButtonLogin.Image = global::Deposito.Properties.Resources.App_login_manager_icon;
-            this.toolStripButtonLogin.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonLogin.Name = "toolStripButtonLogin";
-            this.toolStripButtonLogin.Size = new System.Drawing.Size(50, 55);
-            this.toolStripButtonLogin.Text = "Login";
-            this.toolStripButtonLogin.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonLogin.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
-            // toolStripButtonVenta
-            // 
-            this.toolStripButtonVenta.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.toolStripButtonVenta.Image = global::Deposito.Properties.Resources.payment_icon;
-            this.toolStripButtonVenta.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonVenta.Name = "toolStripButtonVenta";
-            this.toolStripButtonVenta.Size = new System.Drawing.Size(50, 55);
-            this.toolStripButtonVenta.Text = "Venta";
-            this.toolStripButtonVenta.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonVenta.Click += new System.EventHandler(this.toolStripButton1_Click_1);
-            // 
-            // toolStripButtonPedido
-            // 
-            this.toolStripButtonPedido.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.toolStripButtonPedido.Image = global::Deposito.Properties.Resources.Finance_Purchase_Order_icon;
-            this.toolStripButtonPedido.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonPedido.Name = "toolStripButtonPedido";
-            this.toolStripButtonPedido.Size = new System.Drawing.Size(61, 55);
-            this.toolStripButtonPedido.Text = "Pedido";
-            this.toolStripButtonPedido.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonPedido.Click += new System.EventHandler(this.toolStripButtonPedido_Click);
-            // 
             // toolStripButtonCompra
             // 
             this.toolStripButtonCompra.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
@@ -670,6 +643,16 @@
             this.toolStripButton1.Text = "Ajustes";
             this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click_3);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 58);
+            // 
+            // toolStripSeparator10
+            // 
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            this.toolStripSeparator10.Size = new System.Drawing.Size(6, 58);
             // 
             // toolStripButton2
             // 
@@ -693,6 +676,16 @@
             this.toolStripButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
+            // toolStripSeparator11
+            // 
+            this.toolStripSeparator11.Name = "toolStripSeparator11";
+            this.toolStripSeparator11.Size = new System.Drawing.Size(6, 58);
+            // 
+            // toolStripSeparator12
+            // 
+            this.toolStripSeparator12.Name = "toolStripSeparator12";
+            this.toolStripSeparator12.Size = new System.Drawing.Size(6, 58);
+            // 
             // toolStripButton3
             // 
             this.toolStripButton3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
@@ -713,15 +706,23 @@
             this.toolStripButton5.Size = new System.Drawing.Size(101, 55);
             this.toolStripButton5.Text = "Bajo Stock: 0";
             this.toolStripButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
-            // indexToolStripMenuItem
+            // statusStrip
             // 
-            this.indexToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("indexToolStripMenuItem.Image")));
-            this.indexToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
-            this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
-            this.indexToolStripMenuItem.Size = new System.Drawing.Size(227, 24);
-            this.indexToolStripMenuItem.Text = "Manual de usuario";
-            this.indexToolStripMenuItem.Click += new System.EventHandler(this.indexToolStripMenuItem_Click);
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel});
+            this.statusStrip.Location = new System.Drawing.Point(0, 447);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(1045, 22);
+            this.statusStrip.TabIndex = 2;
+            this.statusStrip.Text = "StatusStrip";
+            // 
+            // toolStripStatusLabel
+            // 
+            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(42, 17);
+            this.toolStripStatusLabel.Text = "Estado";
             // 
             // frmPrincipal
             // 

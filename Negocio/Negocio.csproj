@@ -64,6 +64,7 @@
     <Compile Include="Bs_Usuario.cs" />
     <Compile Include="Bs_Utilidad.cs" />
     <Compile Include="Bs_Venta.cs" />
+    <Compile Include="DTOs\ProductoStockBajoDTO.cs" />
     <Compile Include="ListaPedidos.cs" />
     <Compile Include="ListaVendidos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

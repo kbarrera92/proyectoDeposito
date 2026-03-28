@@ -223,6 +223,26 @@ namespace Deposito.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Hopstarter_Soft_Scraps_Adobe_PDF_Document_16 {
+            get {
+                object obj = ResourceManager.GetObject("Hopstarter-Soft-Scraps-Adobe-PDF-Document.16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Hopstarter_Soft_Scraps_Adobe_PDF_Document_48 {
+            get {
+                object obj = ResourceManager.GetObject("Hopstarter-Soft-Scraps-Adobe-PDF-Document.48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logn {
             get {
                 object obj = ResourceManager.GetObject("logn", resourceCulture);

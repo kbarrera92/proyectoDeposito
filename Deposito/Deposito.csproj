@@ -79,6 +79,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsReportes.xsd</DependentUpon>
     </Compile>
+    <Compile Include="FormProductosStockBajo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProductosStockBajo.Designer.cs">
+      <DependentUpon>FormProductosStockBajo.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAbonoASaldo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -407,6 +413,9 @@
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormProductosStockBajo.resx">
+      <DependentUpon>FormProductosStockBajo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAbonoASaldo.resx">
       <DependentUpon>frmAbonoASaldo.cs</DependentUpon>
     </EmbeddedResource>
@@ -708,6 +717,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Custom-Icon-Design-Flatastic-2-Truck.ico" />
+    <None Include="Resources\Hopstarter-Soft-Scraps-Adobe-PDF-Document.16.png" />
+    <None Include="Resources\Hopstarter-Soft-Scraps-Adobe-PDF-Document.48.png" />
     <None Include="Resources\Gartoon-Team-Gartoon-Misc-Dialog-Warning-Exclamation-Mark.48.png" />
     <None Include="Resources\cash-icon.png" />
     <None Include="Resources\soda-coke-bottle-icon.png" />

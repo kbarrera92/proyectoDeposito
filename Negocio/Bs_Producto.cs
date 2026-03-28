@@ -1,5 +1,7 @@
 ﻿using Entidad;
+using Negocio.DTOs;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -183,6 +185,32 @@ namespace Negocio
             
 
             return cantidadProductosStockBajo;
+        }
+
+        public static List<ProductoStockBajoDTO> ListaProductosConBajoStock()
+        {
+            List<PRODUCTO> lista = new List<PRODUCTO>();
+
+            try
+            {
+                using (DEPOSITOEntities1 db = new DEPOSITOEntities1())
+                {
+                    return db.PRODUCTO
+                             .Where(p => p.EXISTENCIA < p.STOCKMINIMO)
+                             .Select(p => new ProductoStockBajoDTO
+                             {
+                                 ID = p.ID,
+                                 DESCRIPCION = p.DESCRIPCION,
+                                 EXISTENCIA = p.EXISTENCIA,
+                                 STOCKMINIMO = p.STOCKMINIMO
+                             })
+                             .ToList();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }
