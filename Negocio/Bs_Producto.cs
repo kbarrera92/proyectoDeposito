@@ -87,6 +87,7 @@ namespace Negocio
                               Presentacion = prod.PRESENTACION,
                               Marca = prod.MARCA,
                               Existencia = prod.EXISTENCIA,
+                              StockMinimo = prod.STOCKMINIMO ?? 0.0m,
                               Retornable = prod.RETORNABLE
                           };
 
@@ -119,7 +120,7 @@ namespace Negocio
 
 
 
-        public static void actualizarProducto(int id, string desc, decimal costo, decimal precio, string pres, string marca, decimal existencia, bool ret)
+        public static void actualizarProducto(int id, string desc, decimal costo, decimal precio, string pres, string marca, decimal existencia, bool ret, decimal stockMinimo)
         {
             using (DEPOSITOEntities1 db = new DEPOSITOEntities1())
             {
@@ -136,6 +137,7 @@ namespace Negocio
                     item.MARCA = marca;
                     item.EXISTENCIA = existencia;
                     item.RETORNABLE = ret;
+                    item.STOCKMINIMO = stockMinimo;
                 }
 
 
@@ -161,6 +163,26 @@ namespace Negocio
 
                 db.SaveChanges();
             }
+        }
+
+        public static int ConsultaProductosConBajoStock()
+        {
+            int cantidadProductosStockBajo = 0;
+
+            try
+            {
+                using (DEPOSITOEntities1 db = new DEPOSITOEntities1())
+                {
+                    cantidadProductosStockBajo = db.PRODUCTO.Count(p => p.EXISTENCIA < (p.STOCKMINIMO ?? 0));
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+            
+
+            return cantidadProductosStockBajo;
         }
     }
 }

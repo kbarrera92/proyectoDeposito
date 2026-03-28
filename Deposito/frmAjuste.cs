@@ -1,5 +1,6 @@
 ﻿using Negocio;
 using System;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -27,14 +28,25 @@ namespace Deposito
             {
                 if (txtcantidad.Text.Equals(""))
                 {
-                    txtsubtotal.Text = "0.00";
+                    MessageBox.Show("Cantidad inválida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else if (!decimal.TryParse(txtcantidad.Text, out decimal decvalue))
+                {
+                    MessageBox.Show("Cantidad inválida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else if (decimal.Parse(txtcantidad.Text) == 0)
+                {
+                    MessageBox.Show("Cantidad inválida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
                 else
                 {
                     txtsubtotal.Text = string.Format("{0}", double.Parse(txtprecio.Text) * double.Parse(txtcantidad.Text));
                     btnagregar.PerformClick();
                 }
-                
+
             }
         }
 
@@ -132,6 +144,16 @@ namespace Deposito
                         dataGridView2.Rows.Clear();
                         Bs_Producto.llenardgv(dataGridView1);
                         limpiardatos();
+
+                        frmPrincipal frmpadre = MdiParent as frmPrincipal;
+
+                        if (frmpadre != null)
+                        {
+                            frmpadre.toolStripButton5.Text =
+                                $"Bajo Stock: {Bs_Producto.ConsultaProductosConBajoStock():0}";
+                            frmpadre.toolStripButton5.BackColor = (Bs_Producto.ConsultaProductosConBajoStock() > 0) ? Color.Salmon : Color.Transparent;
+                        }
+                        
                     }
                     else
                     {
@@ -188,5 +210,7 @@ namespace Deposito
         {
             Bs_Producto.filtrardgv(dataGridView1, txtbuscar.Text.Trim());
         }
+
+        
     }
 }

@@ -1,20 +1,13 @@
-﻿using Entidad;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Deposito
 {
-    
+
     public partial class frmLogin : Form
     {
-        
+
         public frmLogin()
         {
             InitializeComponent();
@@ -27,11 +20,13 @@ namespace Deposito
 
             if (Negocio.Bs_Usuario.checkLogin(user, pass))
             {
-                MessageBox.Show(this, "Bienvenido al sistema: " + user, "Datos correctos", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show(this, "Bienvenido al sistema: " + user, "Datos correctos", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 frmPrincipal frmpadre = Owner as frmPrincipal;
                 frmpadre.toolStripButtonLogin.Text = "Salir";
                 frmpadre.toolStripLabelUser.Text += user;
-                this.Close();
+                frmpadre.toolStripButton5.Text = $"Bajo Stock: {Negocio.Bs_Producto.ConsultaProductosConBajoStock().ToString()}";
+                frmpadre.toolStripButton5.BackColor = (Negocio.Bs_Producto.ConsultaProductosConBajoStock() > 0) ? Color.Salmon : Color.Transparent;
+                Close();
             }
             else
             {
@@ -49,7 +44,7 @@ namespace Deposito
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            
+
         }
     }
 }

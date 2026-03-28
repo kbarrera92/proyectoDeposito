@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnnuevo = new System.Windows.Forms.Button();
             this.btnregistrar = new System.Windows.Forms.Button();
             this.btneliminar = new System.Windows.Forms.Button();
@@ -52,6 +52,8 @@
             this.txtdesproducto = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.textBoxStockMinimo = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -61,7 +63,7 @@
             // 
             this.btnSalir.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.btnSalir.FlatAppearance.BorderSize = 2;
-            this.btnSalir.Location = new System.Drawing.Point(745, 341);
+            this.btnSalir.Location = new System.Drawing.Point(747, 392);
             this.btnSalir.TabIndex = 12;
             // 
             // btnnuevo
@@ -70,7 +72,7 @@
             this.btnnuevo.FlatAppearance.BorderSize = 2;
             this.btnnuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnnuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnnuevo.Location = new System.Drawing.Point(334, 342);
+            this.btnnuevo.Location = new System.Drawing.Point(334, 392);
             this.btnnuevo.Name = "btnnuevo";
             this.btnnuevo.Size = new System.Drawing.Size(131, 52);
             this.btnnuevo.TabIndex = 9;
@@ -84,7 +86,7 @@
             this.btnregistrar.FlatAppearance.BorderSize = 2;
             this.btnregistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnregistrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnregistrar.Location = new System.Drawing.Point(471, 342);
+            this.btnregistrar.Location = new System.Drawing.Point(471, 392);
             this.btnregistrar.Name = "btnregistrar";
             this.btnregistrar.Size = new System.Drawing.Size(131, 52);
             this.btnregistrar.TabIndex = 10;
@@ -98,7 +100,7 @@
             this.btneliminar.FlatAppearance.BorderSize = 2;
             this.btneliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btneliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btneliminar.Location = new System.Drawing.Point(608, 343);
+            this.btneliminar.Location = new System.Drawing.Point(608, 392);
             this.btneliminar.Name = "btneliminar";
             this.btneliminar.Size = new System.Drawing.Size(131, 52);
             this.btneliminar.TabIndex = 11;
@@ -110,25 +112,27 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(332, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(546, 324);
+            this.dataGridView1.Size = new System.Drawing.Size(546, 374);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.textBoxStockMinimo);
+            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.chkretornable);
             this.groupBox1.Controls.Add(this.linkLabel1);
             this.groupBox1.Controls.Add(this.txtprecioproducto);
@@ -148,7 +152,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Lucida Handwriting", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(314, 413);
+            this.groupBox1.Size = new System.Drawing.Size(314, 444);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del producto";
@@ -156,7 +160,7 @@
             // chkretornable
             // 
             this.chkretornable.AutoSize = true;
-            this.chkretornable.Location = new System.Drawing.Point(21, 380);
+            this.chkretornable.Location = new System.Drawing.Point(21, 414);
             this.chkretornable.Name = "chkretornable";
             this.chkretornable.Size = new System.Drawing.Size(141, 25);
             this.chkretornable.TabIndex = 14;
@@ -185,7 +189,7 @@
             // txtexistencia
             // 
             this.txtexistencia.Font = new System.Drawing.Font("Lucida Handwriting", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtexistencia.Location = new System.Drawing.Point(21, 347);
+            this.txtexistencia.Location = new System.Drawing.Point(21, 339);
             this.txtexistencia.Name = "txtexistencia";
             this.txtexistencia.Size = new System.Drawing.Size(249, 22);
             this.txtexistencia.TabIndex = 7;
@@ -194,7 +198,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Lucida Handwriting", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(16, 329);
+            this.label5.Location = new System.Drawing.Point(16, 321);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(86, 15);
             this.label5.TabIndex = 12;
@@ -305,11 +309,30 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // textBoxStockMinimo
+            // 
+            this.textBoxStockMinimo.Font = new System.Drawing.Font("Lucida Handwriting", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxStockMinimo.Location = new System.Drawing.Point(21, 386);
+            this.textBoxStockMinimo.Name = "textBoxStockMinimo";
+            this.textBoxStockMinimo.Size = new System.Drawing.Size(249, 22);
+            this.textBoxStockMinimo.TabIndex = 15;
+            this.textBoxStockMinimo.Text = "0.0";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Lucida Handwriting", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(18, 369);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(109, 15);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Stock mínimo:";
+            // 
             // frmProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(891, 429);
+            this.ClientSize = new System.Drawing.Size(891, 461);
             this.Controls.Add(this.btnnuevo);
             this.Controls.Add(this.btnregistrar);
             this.Controls.Add(this.btneliminar);
@@ -356,5 +379,7 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.CheckBox chkretornable;
+        private System.Windows.Forms.TextBox textBoxStockMinimo;
+        private System.Windows.Forms.Label label8;
     }
 }

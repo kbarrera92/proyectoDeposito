@@ -39,6 +39,7 @@ namespace Deposito
             txtpresentacionprod.Clear();
             txtmarcaprod.Clear();
             txtexistencia.Clear();
+            textBoxStockMinimo.Text = "0.0";
             txtdesproducto.Focus();
         }
 
@@ -67,6 +68,17 @@ namespace Deposito
                     return;
                 }
 
+                
+                if (!decimal.TryParse(textBoxStockMinimo.Text, out decimal valor))
+                {
+                    errorProvider1.SetError(textBoxStockMinimo, "Este campo debe ser numérico");
+                    return;
+                }
+                if (valor < 0)
+                {
+                    errorProvider1.SetError(textBoxStockMinimo, "No se permiten número negativos");
+                    return;
+                }
 
                 Entidad.PRODUCTO prod = new Entidad.PRODUCTO
                 {
@@ -77,7 +89,8 @@ namespace Deposito
                     MARCA = txtmarcaprod.Text.Trim(),
                     EXISTENCIA = int.Parse(txtexistencia.Text.Trim()),
                     ESTADO = true,
-                    RETORNABLE = chkretornable.Checked
+                    RETORNABLE = chkretornable.Checked,
+                    STOCKMINIMO = decimal.Parse(textBoxStockMinimo.Text)
                 };
 
                 try
@@ -96,7 +109,7 @@ namespace Deposito
             else
             {
                 //Actualizar registro
-                Bs_Producto.actualizarProducto(int.Parse(txtidproducto.Text.Trim()), txtdesproducto.Text.Trim(), decimal.Parse(txtcostoproducto.Text.Trim()), decimal.Parse(txtprecioproducto.Text.Trim()), txtpresentacionprod.Text.Trim(), txtmarcaprod.Text.Trim(), decimal.Parse(txtexistencia.Text.Trim()), chkretornable.Checked);
+                Bs_Producto.actualizarProducto(int.Parse(txtidproducto.Text.Trim()), txtdesproducto.Text.Trim(), decimal.Parse(txtcostoproducto.Text.Trim()), decimal.Parse(txtprecioproducto.Text.Trim()), txtpresentacionprod.Text.Trim(), txtmarcaprod.Text.Trim(), decimal.Parse(txtexistencia.Text.Trim()), chkretornable.Checked, decimal.Parse(textBoxStockMinimo.Text));
                 limpiar();
                 Bs_Producto.llenardgv(dataGridView1);
             }
@@ -112,7 +125,8 @@ namespace Deposito
             txtpresentacionprod.Text = dataGridView1.Rows[id].Cells[4].Value.ToString();
             txtexistencia.Text = dataGridView1.Rows[id].Cells[6].Value.ToString();
             txtmarcaprod.Text = dataGridView1.Rows[id].Cells[5].Value.ToString();
-            chkretornable.Checked = Convert.ToBoolean(dataGridView1.Rows[id].Cells[7].Value);
+            textBoxStockMinimo.Text = dataGridView1.Rows[id].Cells[7].Value.ToString();
+            chkretornable.Checked = Convert.ToBoolean(dataGridView1.Rows[id].Cells[8].Value);
 
             btnregistrar.Text = "Actualizar";
         }

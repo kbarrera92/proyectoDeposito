@@ -269,6 +269,15 @@ namespace Deposito
                 dgvdetalles.Rows.Clear();
                 Bs_Producto.llenardgv(dgvProductos);
                 limpiar();
+
+                frmPrincipal frmpadre = MdiParent as frmPrincipal;
+
+                if (frmpadre != null)
+                {
+                    frmpadre.toolStripButton5.Text =
+                        $"Bajo Stock: {Bs_Producto.ConsultaProductosConBajoStock():0}";
+                    frmpadre.toolStripButton5.BackColor = (Bs_Producto.ConsultaProductosConBajoStock() > 0) ? Color.Salmon : Color.Transparent;
+                }
             }
             else
             {
@@ -330,6 +339,17 @@ namespace Deposito
         {
             if (e.KeyCode == Keys.Enter)
             {
+                if (decimal.Parse(txtcantidad.Text) <= 0)
+                {
+                    MessageBox.Show("Cantidad invalida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (!decimal.TryParse(txtcantidad.Text, out decimal decValue))
+                {
+                    MessageBox.Show("Cantidad invalida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 btnregistrar.PerformClick();
             }
 

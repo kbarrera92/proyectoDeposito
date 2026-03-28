@@ -411,10 +411,7 @@ namespace Deposito
             ventaslista.Show();
         }
 
-        private void frmPrincipal_Load(object sender, EventArgs e)
-        {
-            
-        }
+        
 
         private void indexToolStripMenuItem_Click(object sender, EventArgs e)
         {

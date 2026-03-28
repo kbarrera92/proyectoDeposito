@@ -225,7 +225,7 @@
           <Property Name="CANTIDAD" Type="decimal" Precision="18" Scale="2" />
           <Property Name="PRECIO" Type="decimal" Precision="18" Scale="2" />
           <Property Name="SUBTOTAL" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="DETALLESAB" Type="varchar" MaxLength="50" />
+          <Property Name="DETALLESAB" Type="varchar" MaxLength="200" />
           <Property Name="COSTOPED" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="PRODUCTO">
@@ -241,6 +241,7 @@
           <Property Name="EXISTENCIA" Type="decimal" Precision="18" Scale="2" />
           <Property Name="ESTADO" Type="bit" />
           <Property Name="RETORNABLE" Type="bit" />
+          <Property Name="STOCKMINIMO" Type="decimal" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="PROVEEDOR">
           <Key>
@@ -986,7 +987,7 @@
           <Property Name="CANTIDAD" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="PRECIO" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="SUBTOTAL" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="DETALLESAB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DETALLESAB" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="COSTOPED" Type="Decimal" Precision="18" Scale="2" />
           <NavigationProperty Name="PEDIDO" Relationship="Self.FK_PEDIDODETA_PEDIDO" FromRole="PEDIDODETA" ToRole="PEDIDO" />
           <NavigationProperty Name="PRODUCTO" Relationship="Self.FK_PEDIDODETA_PRODUCTO" FromRole="PEDIDODETA" ToRole="PRODUCTO" />
@@ -1010,6 +1011,7 @@
           <NavigationProperty Name="PEDIDODETA" Relationship="Self.FK_PEDIDODETA_PRODUCTO" FromRole="PRODUCTO" ToRole="PEDIDODETA" />
           <NavigationProperty Name="VENTADETA" Relationship="Self.FK_VENTADETA_PRODUCTO" FromRole="PRODUCTO" ToRole="VENTADETA" />
           <NavigationProperty Name="AUTOVENTADETA" Relationship="DEPOSITOModel.FK_AUTOVENTADETA_PRODUCTO" FromRole="PRODUCTO" ToRole="AUTOVENTADETA" />
+          <Property Name="STOCKMINIMO" Type="Decimal" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="PROVEEDOR">
           <Key>
@@ -1809,6 +1811,7 @@
           <EntitySetMapping Name="PRODUCTO">
             <EntityTypeMapping TypeName="DEPOSITOModel.PRODUCTO">
               <MappingFragment StoreEntitySet="PRODUCTO">
+                <ScalarProperty Name="STOCKMINIMO" ColumnName="STOCKMINIMO" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
                 <ScalarProperty Name="COSTO" ColumnName="COSTO" />
@@ -1988,7 +1991,7 @@
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

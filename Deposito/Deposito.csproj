@@ -708,6 +708,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Custom-Icon-Design-Flatastic-2-Truck.ico" />
+    <None Include="Resources\Gartoon-Team-Gartoon-Misc-Dialog-Warning-Exclamation-Mark.48.png" />
     <None Include="Resources\cash-icon.png" />
     <None Include="Resources\soda-coke-bottle-icon.png" />
     <None Include="Resources\dollar-icon %282%29.png" />
