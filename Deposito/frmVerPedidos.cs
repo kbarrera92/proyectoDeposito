@@ -149,6 +149,15 @@ namespace Deposito
 
             }
 
+            frmPrincipal frmpadre = MdiParent as frmPrincipal;
+
+            if (frmpadre != null)
+            {
+                frmpadre.toolStripButton5.Text =
+                    $"Bajo Stock: {Bs_Producto.ConsultaProductosConBajoStock():0}";
+                frmpadre.toolStripButton5.BackColor = (Bs_Producto.ConsultaProductosConBajoStock() > 0) ? Color.Salmon : Color.Transparent;
+            }
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -270,6 +279,15 @@ namespace Deposito
                     Bs_Pedido.llenardgv(dataGridView1);
                 }
 
+            }
+
+            frmPrincipal frmpadre = MdiParent as frmPrincipal;
+
+            if (frmpadre != null)
+            {
+                frmpadre.toolStripButton5.Text =
+                    $"Bajo Stock: {Bs_Producto.ConsultaProductosConBajoStock():0}";
+                frmpadre.toolStripButton5.BackColor = (Bs_Producto.ConsultaProductosConBajoStock() > 0) ? Color.Salmon : Color.Transparent;
             }
         }
     }

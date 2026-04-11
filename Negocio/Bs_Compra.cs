@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidad;
 using System.Data.Entity;
@@ -369,26 +366,52 @@ namespace Negocio
             bool estado = false;
             using (DEPOSITOEntities1 db = new DEPOSITOEntities1())
             {
-                try
+                using (var transaccion = db.Database.BeginTransaction())
                 {
-                    db.COMPRA.Add(compra);
-                    db.SaveChanges();
-                    estado = true;
-                }
-                catch (DbEntityValidationException e)
-                {
-                    foreach (var eve in e.EntityValidationErrors)
+                    try
                     {
-                        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                            eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                        foreach (var ve in eve.ValidationErrors)
+                        db.COMPRA.Add(compra);
+                        db.SaveChanges();
+
+                        if (compra.TIPO == 1)
                         {
-                            Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                                ve.PropertyName, ve.ErrorMessage);
+                            var balance = Bs_CajaExterna.GetLastBalance(db);
+                            var transaction = new CAJAEXTERNA
+                            {
+                                FECHA = DateTime.Now,
+                                TIPOMOVIMIENTO = $"COMPRA ESPECIAL",
+                                DETALLE = $"Compra especial Fecha: {compra.FECHACOMPRA}, Proveedor: {db.PROVEEDOR.FirstOrDefault(x => x.ID == compra.PROVEEDOR).NOMBRE}",
+                                AFECTACION = "DEBITO",
+                                IMPORTE = compra.TOTAL ?? 0m,
+                                SALDO = balance - (compra.TOTAL ?? 0m),
+                                USUARIOREGISTRA = Bs_Usuario.usuarioActual.ToString()
+                            };
+
+                            db.CAJAEXTERNA.Add(transaction);
+                            db.SaveChanges();
                         }
+                        
+                        estado = true;
+                        transaccion.Commit();
                     }
-                    
+                    catch (DbEntityValidationException e)
+                    {
+                        foreach (var eve in e.EntityValidationErrors)
+                        {
+                            Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                                eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                            foreach (var ve in eve.ValidationErrors)
+                            {
+                                Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                                    ve.PropertyName, ve.ErrorMessage);
+                            }
+                        }
+
+                        transaccion.Rollback();
+                        throw;
+                    }
                 }
+                    
 
             }
             return estado;

@@ -249,9 +249,19 @@ namespace Deposito
                         Bs_Venta.llenardgv(dataGridView1);
                         txttotalVentas.Text = string.Format("{0:N2}", calculartotal(dataGridView1, 5));
                         comboBox1.SelectedIndex = 0;
+
                     }
                 }
                 
+            }
+
+            frmPrincipal frmpadre = MdiParent as frmPrincipal;
+
+            if (frmpadre != null)
+            {
+                frmpadre.toolStripButton5.Text =
+                    $"Bajo Stock: {Bs_Producto.ConsultaProductosConBajoStock():0}";
+                frmpadre.toolStripButton5.BackColor = (Bs_Producto.ConsultaProductosConBajoStock() > 0) ? Color.Salmon : Color.Transparent;
             }
         }
     }

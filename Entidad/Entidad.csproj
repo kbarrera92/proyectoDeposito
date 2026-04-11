@@ -68,6 +68,9 @@
     <Compile Include="BIT_ABONOSYSALDOS.cs">
       <DependentUpon>ModelDeposito.tt</DependentUpon>
     </Compile>
+    <Compile Include="CAJAEXTERNA.cs">
+      <DependentUpon>ModelDeposito.tt</DependentUpon>
+    </Compile>
     <Compile Include="CLIENTE.cs">
       <DependentUpon>ModelDeposito.tt</DependentUpon>
     </Compile>

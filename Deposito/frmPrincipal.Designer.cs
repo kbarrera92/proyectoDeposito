@@ -104,6 +104,8 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.controlDeCajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -224,7 +226,6 @@
             this.kardexToolStripMenuItem.Name = "kardexToolStripMenuItem";
             this.kardexToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
             this.kardexToolStripMenuItem.Text = "Kardex";
-            this.kardexToolStripMenuItem.Click += new System.EventHandler(this.kardexToolStripMenuItem_Click);
             // 
             // comprasToolStripMenuItem
             // 
@@ -233,7 +234,6 @@
             this.comprasToolStripMenuItem.Name = "comprasToolStripMenuItem";
             this.comprasToolStripMenuItem.Size = new System.Drawing.Size(166, 24);
             this.comprasToolStripMenuItem.Text = "Entradas";
-            this.comprasToolStripMenuItem.Click += new System.EventHandler(this.comprasToolStripMenuItem_Click);
             // 
             // comprasToolStripMenuItem1
             // 
@@ -327,7 +327,9 @@
             this.utilidadToolStripMenuItem,
             this.cuadreToolStripMenuItem,
             this.trabajadoresToolStripMenuItem,
-            this.clientesXProductoToolStripMenuItem});
+            this.clientesXProductoToolStripMenuItem,
+            this.toolStripSeparator13,
+            this.controlDeCajaToolStripMenuItem});
             this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
             this.reportesToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
             this.reportesToolStripMenuItem.Text = "Reportes";
@@ -428,7 +430,6 @@
             this.toolsMenu.Name = "toolsMenu";
             this.toolsMenu.Size = new System.Drawing.Size(116, 24);
             this.toolsMenu.Text = "&Herramientas";
-            this.toolsMenu.Click += new System.EventHandler(this.toolsMenu_Click);
             // 
             // calculadoraToolStripMenuItem
             // 
@@ -497,7 +498,6 @@
             this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
             this.indexToolStripMenuItem.Size = new System.Drawing.Size(227, 24);
             this.indexToolStripMenuItem.Text = "Manual de usuario";
-            this.indexToolStripMenuItem.Click += new System.EventHandler(this.indexToolStripMenuItem_Click);
             // 
             // toolStripSeparator8
             // 
@@ -724,6 +724,18 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(42, 17);
             this.toolStripStatusLabel.Text = "Estado";
             // 
+            // controlDeCajaToolStripMenuItem
+            // 
+            this.controlDeCajaToolStripMenuItem.Name = "controlDeCajaToolStripMenuItem";
+            this.controlDeCajaToolStripMenuItem.Size = new System.Drawing.Size(213, 24);
+            this.controlDeCajaToolStripMenuItem.Text = "Control de Caja";
+            this.controlDeCajaToolStripMenuItem.Click += new System.EventHandler(this.controlDeCajaToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator13
+            // 
+            this.toolStripSeparator13.Name = "toolStripSeparator13";
+            this.toolStripSeparator13.Size = new System.Drawing.Size(210, 6);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -827,6 +839,8 @@
         public System.Windows.Forms.ToolStripButton toolStripButton4;
         private System.Windows.Forms.ToolStripMenuItem clientesXProductoToolStripMenuItem;
         public System.Windows.Forms.ToolStripButton toolStripButton5;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
+        private System.Windows.Forms.ToolStripMenuItem controlDeCajaToolStripMenuItem;
     }
 }
 

@@ -331,16 +331,38 @@ namespace Negocio
 
             using (DEPOSITOEntities1 db = new DEPOSITOEntities1())
             {
-                try
+                using (var transaccion = db.Database.BeginTransaction())
                 {
-                    db.MOVIMIENTO.Add(mov);
-                    db.SaveChanges();
-                    resp = true;
+                    try
+                    {
+                        db.MOVIMIENTO.Add(mov);
+                        db.SaveChanges();
+
+                        var balance = Bs_CajaExterna.GetLastBalance(db);
+                        var transaction = new CAJAEXTERNA
+                        {
+                            FECHA = DateTime.Now,
+                            TIPOMOVIMIENTO = mov.TIPO == 1 ? "MOVIMIENTO ENTRADA" : "MOVIMIENTO SALIDA",
+                            DETALLE = mov.DESCRIPCION,
+                            AFECTACION = mov.TIPO == 1 ? "CREDITO" : "DEBITO",
+                            IMPORTE = mov.IMPORTE ?? 0m,
+                            SALDO = mov.TIPO == 1 ? balance + (mov.IMPORTE ?? 0m) : balance - (mov.IMPORTE ?? 0m),
+                            USUARIOREGISTRA = Bs_Usuario.usuarioActual.ToString()
+                        };
+
+                        db.CAJAEXTERNA.Add(transaction);
+                        db.SaveChanges();
+
+                        resp = true;
+                        transaccion.Commit();
+                    }
+                    catch (Exception)
+                    {
+                        transaccion.Rollback();
+                        throw;
+                    }
                 }
-                catch (Exception)
-                {
                     
-                }
             }
 
             return resp;

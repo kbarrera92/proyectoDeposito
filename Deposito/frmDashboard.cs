@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidad;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -91,6 +92,39 @@ namespace Deposito
         private void panel4_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void buttonGuadarEfectivoReal_Click(object sender, EventArgs e)
+        {
+            if (!decimal.TryParse(txttotalreal.Text, out decimal decValue) || decimal.Parse(txttotalreal.Text) <= 0m)
+            {
+                MessageBox.Show("La cantidad de efectivo no es válida", "Datos incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                if (MessageBox.Show("¿Desea guardar este registro de efectivo a la caja?", "Guardando", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    var transaction = new CAJAEXTERNA
+                    {
+                        FECHA = DateTime.Now,
+                        TIPOMOVIMIENTO = "EFECTIVO DIA",
+                        DETALLE = $"EFECTIVO {DateTime.Now.ToString("dd/MM/yyyy")}",
+                        AFECTACION = "CREDITO",
+                        IMPORTE = decimal.Parse(txttotalreal.Text),
+                        SALDO = 0M,
+                        USUARIOREGISTRA = Negocio.Bs_Usuario.usuarioActual.ToString()
+                    };
+
+                    if (Negocio.Bs_CajaExterna.SaveTransactionCajaExterna(transaction))
+                        MessageBox.Show("El registro se grabó correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Hubo un error al grabar el registro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

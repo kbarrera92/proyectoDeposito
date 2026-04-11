@@ -51,6 +51,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtventascreditocob = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txttotalreal = new System.Windows.Forms.TextBox();
             this.panel17 = new System.Windows.Forms.Panel();
@@ -115,8 +117,7 @@
             this.lbltotalventascredito = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtventascreditocob = new System.Windows.Forms.TextBox();
+            this.buttonGuadarEfectivoReal = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -393,6 +394,7 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.buttonGuadarEfectivoReal);
             this.panel4.Controls.Add(this.label9);
             this.panel4.Controls.Add(this.txtventascreditocob);
             this.panel4.Controls.Add(this.label2);
@@ -416,9 +418,27 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(668, 589);
+            this.panel4.Size = new System.Drawing.Size(668, 608);
             this.panel4.TabIndex = 8;
             this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(359, 453);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(204, 15);
+            this.label9.TabIndex = 22;
+            this.label9.Text = "VENTAS CREDITO COBRADAS:";
+            // 
+            // txtventascreditocob
+            // 
+            this.txtventascreditocob.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtventascreditocob.Location = new System.Drawing.Point(359, 470);
+            this.txtventascreditocob.Name = "txtventascreditocob";
+            this.txtventascreditocob.Size = new System.Drawing.Size(286, 38);
+            this.txtventascreditocob.TabIndex = 21;
             // 
             // label2
             // 
@@ -1101,29 +1121,22 @@
             this.pictureBox17.TabIndex = 1;
             this.pictureBox17.TabStop = false;
             // 
-            // label9
+            // buttonGuadarEfectivoReal
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(359, 453);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(204, 15);
-            this.label9.TabIndex = 22;
-            this.label9.Text = "VENTAS CREDITO COBRADAS:";
-            // 
-            // txtventascreditocob
-            // 
-            this.txtventascreditocob.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtventascreditocob.Location = new System.Drawing.Point(359, 470);
-            this.txtventascreditocob.Name = "txtventascreditocob";
-            this.txtventascreditocob.Size = new System.Drawing.Size(286, 38);
-            this.txtventascreditocob.TabIndex = 21;
+            this.buttonGuadarEfectivoReal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGuadarEfectivoReal.Location = new System.Drawing.Point(570, 580);
+            this.buttonGuadarEfectivoReal.Name = "buttonGuadarEfectivoReal";
+            this.buttonGuadarEfectivoReal.Size = new System.Drawing.Size(75, 23);
+            this.buttonGuadarEfectivoReal.TabIndex = 23;
+            this.buttonGuadarEfectivoReal.Text = "Guardar";
+            this.buttonGuadarEfectivoReal.UseVisualStyleBackColor = true;
+            this.buttonGuadarEfectivoReal.Click += new System.EventHandler(this.buttonGuadarEfectivoReal_Click);
             // 
             // frmDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1280, 589);
+            this.ClientSize = new System.Drawing.Size(1280, 608);
             this.Controls.Add(this.panel19);
             this.Controls.Add(this.panel18);
             this.Controls.Add(this.panel15);
@@ -1292,5 +1305,6 @@
         private System.Windows.Forms.TextBox txttotalreal;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtventascreditocob;
+        private System.Windows.Forms.Button buttonGuadarEfectivoReal;
     }
 }

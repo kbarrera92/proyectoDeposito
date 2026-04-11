@@ -182,11 +182,6 @@ namespace Deposito
             cliente.Show();
         }
 
-        private void toolsMenu_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (Bs_Usuario.usuarioActual == 0)
@@ -411,13 +406,6 @@ namespace Deposito
             ventaslista.Show();
         }
 
-        
-
-        private void indexToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void resumenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (Bs_Usuario.usuarioActual == 0)
@@ -542,17 +530,7 @@ namespace Deposito
                 }
             }
         }
-
-        private void kardexToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comprasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
+                
         private void utilidadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (Bs_Usuario.usuarioActual == 0)
@@ -715,6 +693,36 @@ namespace Deposito
             FormProductosStockBajo stockbajo = new FormProductosStockBajo();
             stockbajo.MdiParent = this;
             stockbajo.Show();
+        }
+
+        private void controlDeCajaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Bs_Usuario.usuarioActual == 0)
+            {
+                MessageBox.Show("Debe iniciar sesión", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!Bs_Usuario.isAdmin)
+            {
+                MessageBox.Show("No tiene acceso a este módulo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            foreach (Form f in this.MdiChildren)
+            {
+                if (f is FormControlCajaExterna)
+                {
+                    f.Activate();
+                    return;
+                }
+            }
+
+            FormControlCajaExterna caja = new FormControlCajaExterna
+            {
+                MdiParent = this
+            };
+            caja.Show();
         }
     }
 }

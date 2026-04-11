@@ -133,6 +133,9 @@ namespace Deposito
 
         private void btneliminar_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("¿Desea eliminar permanentemente este registro?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                return;
+
             try
             {
                 Bs_Producto.dardebajaproducto(int.Parse(txtidproducto.Text));
