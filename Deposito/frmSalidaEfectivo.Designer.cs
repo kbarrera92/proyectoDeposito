@@ -153,9 +153,9 @@
             this.txttotal.BackColor = System.Drawing.Color.Blue;
             this.txttotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txttotal.ForeColor = System.Drawing.Color.Yellow;
-            this.txttotal.Location = new System.Drawing.Point(616, 310);
+            this.txttotal.Location = new System.Drawing.Point(562, 310);
             this.txttotal.Name = "txttotal";
-            this.txttotal.Size = new System.Drawing.Size(197, 44);
+            this.txttotal.Size = new System.Drawing.Size(251, 44);
             this.txttotal.TabIndex = 6;
             this.txttotal.Text = "0.00";
             this.txttotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;

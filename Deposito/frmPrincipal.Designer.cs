@@ -724,13 +724,7 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(42, 17);
             this.toolStripStatusLabel.Text = "Estado";
             // 
-            // controlDeCajaToolStripMenuItem
-            // 
-            this.controlDeCajaToolStripMenuItem.Name = "controlDeCajaToolStripMenuItem";
-            this.controlDeCajaToolStripMenuItem.Size = new System.Drawing.Size(213, 24);
-            this.controlDeCajaToolStripMenuItem.Text = "Control de Caja";
-            this.controlDeCajaToolStripMenuItem.Click += new System.EventHandler(this.controlDeCajaToolStripMenuItem_Click);
-            // 
+             
             // toolStripSeparator13
             // 
             this.toolStripSeparator13.Name = "toolStripSeparator13";

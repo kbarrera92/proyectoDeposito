@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Entidad;
+﻿using Entidad;
+using System;
 using System.Data.Entity;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Negocio
 {
@@ -295,7 +292,7 @@ namespace Negocio
         public static void llenargastosvariosfecha(DataGridView datagrid, DateTime fechaini, DateTime fechafin)
         {
             using (DEPOSITOEntities1 db = new DEPOSITOEntities1())
-            {                
+            {
                 var consul = db.SALIDAEFECTIVO
                     .Where(x => DbFunctions.TruncateTime(x.FECHA) >= fechaini && DbFunctions.TruncateTime(x.FECHA) <= fechafin)
                     .Select(x => x);
@@ -318,51 +315,27 @@ namespace Negocio
                 }
                 catch (Exception)
                 {
-                    
+
                 }
             }
 
             return resp;
         }
 
-        public static bool crearNuevoMov(MOVIMIENTO mov)
+        public static bool crearNuevoMov(MOVIMIENTO mov, DEPOSITOEntities1 context)
         {
             bool resp = false;
 
-            using (DEPOSITOEntities1 db = new DEPOSITOEntities1())
+            try
             {
-                using (var transaccion = db.Database.BeginTransaction())
-                {
-                    try
-                    {
-                        db.MOVIMIENTO.Add(mov);
-                        db.SaveChanges();
+                context.MOVIMIENTO.Add(mov);
+                context.SaveChanges();
 
-                        var balance = Bs_CajaExterna.GetLastBalance(db);
-                        var transaction = new CAJAEXTERNA
-                        {
-                            FECHA = DateTime.Now,
-                            TIPOMOVIMIENTO = mov.TIPO == 1 ? "MOVIMIENTO ENTRADA" : "MOVIMIENTO SALIDA",
-                            DETALLE = mov.DESCRIPCION,
-                            AFECTACION = mov.TIPO == 1 ? "CREDITO" : "DEBITO",
-                            IMPORTE = mov.IMPORTE ?? 0m,
-                            SALDO = mov.TIPO == 1 ? balance + (mov.IMPORTE ?? 0m) : balance - (mov.IMPORTE ?? 0m),
-                            USUARIOREGISTRA = Bs_Usuario.usuarioActual.ToString()
-                        };
-
-                        db.CAJAEXTERNA.Add(transaction);
-                        db.SaveChanges();
-
-                        resp = true;
-                        transaccion.Commit();
-                    }
-                    catch (Exception)
-                    {
-                        transaccion.Rollback();
-                        throw;
-                    }
-                }
-                    
+                resp = true;
+            }
+            catch (Exception)
+            {
+                throw;
             }
 
             return resp;
@@ -386,9 +359,9 @@ namespace Negocio
 
                 datagrid.DataSource = consulta.ToList();
 
-                
-            }            
-            
+
+            }
+
         }
 
         public static void borrarmov(int id)
@@ -401,10 +374,10 @@ namespace Negocio
 
                 foreach (var item in consulta)
                 {
-                    db.MOVIMIENTO.Remove(item);   
+                    db.MOVIMIENTO.Remove(item);
                 }
 
-                db.SaveChanges(); 
+                db.SaveChanges();
             }
 
         }
@@ -438,13 +411,13 @@ namespace Negocio
 
             using (DEPOSITOEntities1 db = new DEPOSITOEntities1())
             {
-                var consulta = db.SUCURSAL.Where(x=>x.ID == suc).Select(x=>x.CAPITAL).DefaultIfEmpty().Sum();
+                var consulta = db.SUCURSAL.Where(x => x.ID == suc).Select(x => x.CAPITAL).DefaultIfEmpty().Sum();
 
                 capital = Convert.ToDecimal(consulta);
             }
 
             return capital;
-            
+
         }
 
         public static bool cambiarcapital(short suc, decimal nuevo)
@@ -472,11 +445,11 @@ namespace Negocio
 
                 exito = false;
             }
-                       
+
 
             return exito;
         }
 
-        
+
     }
 }

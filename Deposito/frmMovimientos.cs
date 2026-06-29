@@ -78,7 +78,7 @@ namespace Deposito
                         IMPORTE = decimal.Parse(txtimporte.Text.Trim())
                     };
 
-                    if (Bs_Efectivo.crearNuevoMov(mov))
+                    if (Bs_Efectivo.crearNuevoMov(mov, new Entidad.DEPOSITOEntities1()))
                     {
                         MessageBox.Show("El registro se guardó correctamente", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -155,10 +155,7 @@ namespace Deposito
             dataGridView1.Rows.Clear();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void button4_Click(object sender, EventArgs e)
         {

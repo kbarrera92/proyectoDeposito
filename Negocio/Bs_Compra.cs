@@ -372,41 +372,12 @@ namespace Negocio
                     {
                         db.COMPRA.Add(compra);
                         db.SaveChanges();
-
-                        if (compra.TIPO == 1)
-                        {
-                            var balance = Bs_CajaExterna.GetLastBalance(db);
-                            var transaction = new CAJAEXTERNA
-                            {
-                                FECHA = DateTime.Now,
-                                TIPOMOVIMIENTO = $"COMPRA ESPECIAL",
-                                DETALLE = $"Compra especial Fecha: {compra.FECHACOMPRA}, Proveedor: {db.PROVEEDOR.FirstOrDefault(x => x.ID == compra.PROVEEDOR).NOMBRE}",
-                                AFECTACION = "DEBITO",
-                                IMPORTE = compra.TOTAL ?? 0m,
-                                SALDO = balance - (compra.TOTAL ?? 0m),
-                                USUARIOREGISTRA = Bs_Usuario.usuarioActual.ToString()
-                            };
-
-                            db.CAJAEXTERNA.Add(transaction);
-                            db.SaveChanges();
-                        }
                         
                         estado = true;
                         transaccion.Commit();
                     }
                     catch (DbEntityValidationException e)
                     {
-                        foreach (var eve in e.EntityValidationErrors)
-                        {
-                            Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                                eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                            foreach (var ve in eve.ValidationErrors)
-                            {
-                                Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                                    ve.PropertyName, ve.ErrorMessage);
-                            }
-                        }
-
                         transaccion.Rollback();
                         throw;
                     }

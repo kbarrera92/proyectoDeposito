@@ -106,19 +106,6 @@
           <Property Name="COBRADO" Type="decimal" Precision="18" Scale="2" />
           <Property Name="TRABAJADOR" Type="int" />
         </EntityType>
-        <EntityType Name="CAJAEXTERNA">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FECHA" Type="datetime" Nullable="false" />
-          <Property Name="TIPOMOVIMIENTO" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="DETALLE" Type="varchar" MaxLength="200" />
-          <Property Name="AFECTACION" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="IMPORTE" Type="decimal" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="SALDO" Type="decimal" Precision="10" Scale="2" Nullable="false" />
-          <Property Name="USUARIOREGISTRA" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
         <EntityType Name="CLIENTE">
           <Key>
             <PropertyRef Name="ID" />
@@ -668,7 +655,6 @@
           <EntitySet Name="AUTOVENTADETA2" EntityType="Self.AUTOVENTADETA2" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BIT_ABONOSYSALDOS" EntityType="Self.BIT_ABONOSYSALDOS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BITACORAVENTASTRAB" EntityType="Self.BITACORAVENTASTRAB" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CAJAEXTERNA" EntityType="Self.CAJAEXTERNA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="COMPRA" EntityType="Self.COMPRA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="COMPRADETA" EntityType="Self.COMPRADETA" Schema="dbo" store:Type="Tables" />
@@ -1501,7 +1487,6 @@
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
             <End Role="AUTOVENTADETA" EntitySet="AUTOVENTADETA" />
           </AssociationSet>
-          <EntitySet Name="CAJAEXTERNA" EntityType="DEPOSITOModel.CAJAEXTERNA" />
         </EntityContainer>
         <EntityType Name="BIT_ABONOSYSALDOS">
           <Key>
@@ -1620,19 +1605,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="CAJAEXTERNA">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FECHA" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="TIPOMOVIMIENTO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="AFECTACION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IMPORTE" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
-          <Property Name="SALDO" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
-          <Property Name="USUARIOREGISTRA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DETALLE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1998,20 +1970,6 @@
                 <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
                 <ScalarProperty Name="IDPRODUCTO" ColumnName="IDPRODUCTO" />
                 <ScalarProperty Name="IDAUTOVENTA" ColumnName="IDAUTOVENTA" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CAJAEXTERNA">
-            <EntityTypeMapping TypeName="DEPOSITOModel.CAJAEXTERNA">
-              <MappingFragment StoreEntitySet="CAJAEXTERNA">
-                <ScalarProperty Name="DETALLE" ColumnName="DETALLE" />
-                <ScalarProperty Name="USUARIOREGISTRA" ColumnName="USUARIOREGISTRA" />
-                <ScalarProperty Name="SALDO" ColumnName="SALDO" />
-                <ScalarProperty Name="IMPORTE" ColumnName="IMPORTE" />
-                <ScalarProperty Name="AFECTACION" ColumnName="AFECTACION" />
-                <ScalarProperty Name="TIPOMOVIMIENTO" ColumnName="TIPOMOVIMIENTO" />
-                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

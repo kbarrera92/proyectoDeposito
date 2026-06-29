@@ -38,7 +38,7 @@ namespace Deposito
 
             if (MessageBox.Show("¿Ya cobró esta venta?", "Cambiando", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                if (Negocio.Bs_Venta.cobrarventacredito(int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString())))
+                if (Bs_Venta.cobrarventacredito(int.Parse(dataGridView1.CurrentRow.Cells[0].Value.ToString())))
                 {
                     Entidad.MOVIMIENTO mov = new Entidad.MOVIMIENTO()
                     {
@@ -48,10 +48,10 @@ namespace Deposito
                         IMPORTE = decimal.Parse(dataGridView1.CurrentRow.Cells[3].Value.ToString())
                     };
 
-                    if (Bs_Efectivo.crearNuevoMov(mov))
+                    if (Bs_Efectivo.crearNuevoMov(mov, new Entidad.DEPOSITOEntities1()))
                     {
                         MessageBox.Show("Se guardó correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        Negocio.Bs_Venta.verventascredito(dataGridView1);
+                        Bs_Venta.verventascredito(dataGridView1);
                     }
                         
                 }

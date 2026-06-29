@@ -1,4 +1,5 @@
 ﻿using Entidad;
+using Negocio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,7 +33,8 @@ namespace Deposito
             txtcreditoentradas.Text = string.Format("Q {0:N2}", Negocio.Bs_Efectivo.getcreditohoy(DateTime.Today.Date));
             txttotalsalidas.Text = string.Format("Q {0:N2}", Negocio.Bs_Efectivo.getsalidashoy(DateTime.Today.Date));
             txtventascreditocob.Text = string.Format("Q {0:N2}", Negocio.Bs_Venta.gettotalventascreditopagadas(DateTime.Today.Date));
-            txttotalreal.Text = string.Format("{0:N2}", Negocio.Bs_Efectivo.getefectivohoy(DateTime.Today.Date) - Negocio.Bs_Efectivo.getsalidashoy(DateTime.Today.Date) + Negocio.Bs_Venta.gettotalventascreditopagadas(DateTime.Today.Date));
+            txttotalreal.Text = string.Format("{0:N2}", Negocio.Bs_Efectivo.getefectivohoy(DateTime.Today.Date) - 
+                Negocio.Bs_Efectivo.getsalidashoy(DateTime.Today.Date) + Negocio.Bs_Venta.gettotalventascreditopagadas(DateTime.Today.Date));
 
             //ESTO ES FIJO
             lblcantproductos.Text = string.Format("{0}", Negocio.Bs_Producto.getcantidad());
@@ -106,19 +108,18 @@ namespace Deposito
             {
                 if (MessageBox.Show("¿Desea guardar este registro de efectivo a la caja?", "Guardando", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    var transaction = new CAJAEXTERNA
+                    var movimiento = new MOVIMIENTO()
                     {
-                        FECHA = DateTime.Now,
-                        TIPOMOVIMIENTO = "EFECTIVO DIA",
-                        DETALLE = $"EFECTIVO {DateTime.Now.ToString("dd/MM/yyyy")}",
-                        AFECTACION = "CREDITO",
-                        IMPORTE = decimal.Parse(txttotalreal.Text),
-                        SALDO = 0M,
-                        USUARIOREGISTRA = Negocio.Bs_Usuario.usuarioActual.ToString()
+                        FECHA = dateTimePicker1.Value.Date,
+                        DESCRIPCION = $"Efectivo de la fecha {dateTimePicker1.Value.Date}",
+                        TIPO = 1,
+                        IMPORTE = decimal.Parse(txttotalreal.Text.Trim())
                     };
 
-                    if (Negocio.Bs_CajaExterna.SaveTransactionCajaExterna(transaction))
-                        MessageBox.Show("El registro se grabó correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (Bs_Efectivo.crearNuevoMov(movimiento, new DEPOSITOEntities1()))
+                    {
+                        MessageBox.Show("El registro se guardó correctamente", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }                                            
                 }
             }
             catch (Exception)

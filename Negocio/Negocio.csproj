@@ -53,7 +53,6 @@
     <Compile Include="Bs_Ajuste.cs" />
     <Compile Include="Bs_Area.cs" />
     <Compile Include="Bs_Autoventa.cs" />
-    <Compile Include="Bs_CajaExterna.cs" />
     <Compile Include="Bs_Cliente.cs" />
     <Compile Include="Bs_Compra.cs" />
     <Compile Include="Bs_Efectivo.cs" />

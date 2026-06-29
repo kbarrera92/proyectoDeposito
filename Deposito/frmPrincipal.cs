@@ -1,14 +1,14 @@
-﻿using System;
-using Microsoft.VisualBasic;
-using System.Windows.Forms;
-using System.Diagnostics;
+﻿using Microsoft.VisualBasic;
 using Negocio;
+using System;
+using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace Deposito
 {
     public partial class frmPrincipal : Form
     {
-        
+
 
         public frmPrincipal()
         {
@@ -34,16 +34,16 @@ namespace Deposito
             frmUsuarios.Show();
         }
 
-        
 
-        
+
+
 
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-        
+
 
         private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -54,7 +54,7 @@ namespace Deposito
         {
             statusStrip.Visible = statusBarToolStripMenuItem.Checked;
         }
-   
+
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -77,10 +77,10 @@ namespace Deposito
                 toolStripLabelUser.Text = "Usuario: ";
                 Bs_Usuario.usuarioActual = 0;
             }
-            
 
 
-            
+
+
         }
 
         private void calculadoraToolStripMenuItem_Click(object sender, EventArgs e)
@@ -292,7 +292,7 @@ namespace Deposito
             comprasToolStripMenuItem1.PerformClick();
         }
 
-        
+
 
         private void pedidosToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -320,7 +320,7 @@ namespace Deposito
 
         private void ventaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
             toolStripButtonVenta.PerformClick();
         }
 
@@ -329,7 +329,7 @@ namespace Deposito
             toolStripButtonPedido.PerformClick();
         }
 
-       
+
 
         private void ajustesToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -348,7 +348,7 @@ namespace Deposito
             frmAjuste ajuste = new frmAjuste();
             ajuste.MdiParent = this;
             ajuste.Show();
-            
+
         }
 
         private void toolStripButton1_Click_3(object sender, EventArgs e)
@@ -419,7 +419,7 @@ namespace Deposito
                 MessageBox.Show("No tiene acceso a este módulo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            
+
             object valueinput = Interaction.InputBox("Ingrese su contraseña", "Validando", "");
             if (valueinput.ToString() == Bs_Usuario.password)
             {
@@ -427,8 +427,8 @@ namespace Deposito
                 dash.MdiParent = this;
                 dash.Show();
             }
-           
-            
+
+
         }
 
         private void existenciasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -447,7 +447,7 @@ namespace Deposito
                 inventario.Show();
             }
 
-            
+
         }
 
         private void movimientosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -471,12 +471,12 @@ namespace Deposito
                 movi.MdiParent = this;
                 movi.Show();
             }
-            
+
         }
 
         private void frmPrincipal_KeyDown(object sender, KeyEventArgs e)
         {
-            
+
             if (e.KeyCode == Keys.F8)
             {
                 if (Bs_Usuario.usuarioActual == 0)
@@ -526,11 +526,11 @@ namespace Deposito
                             Process.Start(@"C:\Windows\System32\calc.exe");
                         }
                     }
-                    
+
                 }
             }
         }
-                
+
         private void utilidadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (Bs_Usuario.usuarioActual == 0)
@@ -695,34 +695,6 @@ namespace Deposito
             stockbajo.Show();
         }
 
-        private void controlDeCajaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (Bs_Usuario.usuarioActual == 0)
-            {
-                MessageBox.Show("Debe iniciar sesión", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (!Bs_Usuario.isAdmin)
-            {
-                MessageBox.Show("No tiene acceso a este módulo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            foreach (Form f in this.MdiChildren)
-            {
-                if (f is FormControlCajaExterna)
-                {
-                    f.Activate();
-                    return;
-                }
-            }
-
-            FormControlCajaExterna caja = new FormControlCajaExterna
-            {
-                MdiParent = this
-            };
-            caja.Show();
-        }
+        
     }
 }
