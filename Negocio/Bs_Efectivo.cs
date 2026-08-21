@@ -33,7 +33,7 @@ namespace Negocio
 
                     var consulta1 = db.VENTA.Where(x => DbFunctions.TruncateTime(x.FECHA) == hoy).Sum(x => x.TOTAL);
 
-                    total = Convert.ToDecimal(consulta) + Convert.ToDecimal(consulta1) + Convert.ToDecimal(consulta2) + Convert.ToDecimal(consulta3);
+                    total = Convert.ToDecimal(consulta) + Convert.ToDecimal(consulta2) + Convert.ToDecimal(consulta3) + Convert.ToDecimal(consulta1);
                 }
 
 
@@ -71,7 +71,7 @@ namespace Negocio
 
                     var consulta1 = db.VENTA.Where(x => DbFunctions.TruncateTime(x.FECHA) >= ini && DbFunctions.TruncateTime(x.FECHA) <= fin).Sum(x => x.TOTAL);
 
-                    total = Convert.ToDecimal(consulta) + Convert.ToDecimal(consulta1) + Convert.ToDecimal(consulta2) + Convert.ToDecimal(consulta3);
+                    total = Convert.ToDecimal(consulta) + Convert.ToDecimal(consulta2) + Convert.ToDecimal(consulta3) + Convert.ToDecimal(consulta1);
                 }
 
 
