@@ -36,16 +36,7 @@ namespace Deposito
             txttotalreal.Text = string.Format("{0:N2}", Negocio.Bs_Efectivo.getefectivohoy(DateTime.Today.Date) - 
                 Negocio.Bs_Efectivo.getsalidashoy(DateTime.Today.Date) + Negocio.Bs_Venta.gettotalventascreditopagadas(DateTime.Today.Date));
 
-            //ESTO ES FIJO
-            lblcantproductos.Text = string.Format("{0}", Negocio.Bs_Producto.getcantidad());
-            lblcantclientes.Text = Negocio.Bs_Cliente.getcantidad().ToString();
-            lblcantproveedores.Text = Negocio.Bs_Proveedor.getcantidad().ToString();
-            lblareareasreparto.Text = Negocio.Bs_Area.getcantidad().ToString();
-            lblcantrepartidores.Text = Negocio.Bs_Repartidor.getcantidad().ToString();
-            lbltotalcxp.Text = string.Format("Q {0:N2}", Negocio.Bs_Compra.gettotalcxp());
-            lbltotalsaldo.Text = string.Format("Q {0:N2}", Negocio.Bs_Cliente.gettotalsaldo());
-            lbltotalventascredito.Text = string.Format("Q {0:N2}", Negocio.Bs_Venta.gettotalventascredito());
-            lblvalorinventario.Text = string.Format("Q {0:N2}", Negocio.Bs_Producto.getvalorinventario());
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -56,7 +47,6 @@ namespace Deposito
             lbltotalabonos.Text = string.Format("Q {0:N2}", Negocio.Bs_Pedido.gettotalxfechasabonos(dateTimePicker1.Value.Date, dateTimePicker2.Value.Date));
             lbltotalcompras.Text = string.Format("Q {0:N2}", Negocio.Bs_Compra.gettotalhoyporfechas(dateTimePicker1.Value.Date, dateTimePicker2.Value.Date));
             lbltotalgastos.Text = string.Format("Q {0:N2}", Negocio.Bs_Efectivo.gettotalhoyporfechas(dateTimePicker1.Value.Date, dateTimePicker2.Value.Date));
-            lbltotalcxp.Text = string.Format("Q {0:N2}", Negocio.Bs_Compra.gettotalhoyporfechascxp(dateTimePicker1.Value.Date, dateTimePicker2.Value.Date));
             lblabonoscxp.Text = string.Format("Q {0:N2}", Negocio.Bs_Compra.gettotalhoyporfechascxp(dateTimePicker1.Value.Date, dateTimePicker2.Value.Date));
             txtefectivo.Text = string.Format("Q {0:N2}", Negocio.Bs_Efectivo.getefectivofechas(dateTimePicker1.Value.Date, dateTimePicker2.Value.Date));
             txtcreditoentradas.Text = string.Format("Q {0:N2}", Negocio.Bs_Efectivo.getcreditofechas(dateTimePicker1.Value.Date, dateTimePicker2.Value.Date));
@@ -108,12 +98,18 @@ namespace Deposito
             {
                 if (MessageBox.Show("¿Desea guardar este registro de efectivo a la caja?", "Guardando", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+                    short tipoTran;
+                    using (var db = new DEPOSITOEntities1())
+                    {
+                        tipoTran = db.TRANSACCION.Where(t => t.NOMBRETRANS == "EFECTIVODIA").Select(t => t.ID).FirstOrDefault();
+                    }
+
                     var movimiento = new MOVIMIENTO()
                     {
                         FECHA = dateTimePicker1.Value.Date,
                         DESCRIPCION = $"Efectivo de la fecha {dateTimePicker1.Value.Date}",
-                        TIPO = 1,
-                        IMPORTE = decimal.Parse(txttotalreal.Text.Trim())
+                        TIPO = tipoTran,
+                        IMPORTE = decimal.Parse(txttotalreal.Text.Trim())                        
                     };
 
                     if (Bs_Efectivo.crearNuevoMov(movimiento, new DEPOSITOEntities1()))

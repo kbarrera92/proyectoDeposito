@@ -109,6 +109,7 @@ namespace Deposito
             {
 
                 var lst = (from a in db.TRANSACCION
+                           where a.NOMBRETRANS.Contains("ENTRADA") || a.NOMBRETRANS.Contains("SALIDA")
                            select new
                            {
                                Codigo = a.ID,

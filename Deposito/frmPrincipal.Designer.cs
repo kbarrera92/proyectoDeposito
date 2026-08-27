@@ -57,6 +57,7 @@
             this.ajustesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resumenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resumenAdministrativoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.existenciasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.movimientosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.utilidadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -105,7 +106,6 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.resumenAdministrativoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -340,6 +340,13 @@
             this.resumenToolStripMenuItem.Size = new System.Drawing.Size(252, 24);
             this.resumenToolStripMenuItem.Text = "Resumen Diario";
             this.resumenToolStripMenuItem.Click += new System.EventHandler(this.resumenToolStripMenuItem_Click);
+            // 
+            // resumenAdministrativoToolStripMenuItem
+            // 
+            this.resumenAdministrativoToolStripMenuItem.Name = "resumenAdministrativoToolStripMenuItem";
+            this.resumenAdministrativoToolStripMenuItem.Size = new System.Drawing.Size(252, 24);
+            this.resumenAdministrativoToolStripMenuItem.Text = "Resumen Administrativo";
+            this.resumenAdministrativoToolStripMenuItem.Click += new System.EventHandler(this.resumenAdministrativoToolStripMenuItem_Click);
             // 
             // existenciasToolStripMenuItem
             // 
@@ -728,12 +735,6 @@
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
             this.toolStripStatusLabel.Size = new System.Drawing.Size(42, 17);
             this.toolStripStatusLabel.Text = "Estado";
-            // 
-            // resumenAdministrativoToolStripMenuItem
-            // 
-            this.resumenAdministrativoToolStripMenuItem.Name = "resumenAdministrativoToolStripMenuItem";
-            this.resumenAdministrativoToolStripMenuItem.Size = new System.Drawing.Size(252, 24);
-            this.resumenAdministrativoToolStripMenuItem.Text = "Resumen Administrativo";
             // 
             // frmPrincipal
             // 

@@ -695,6 +695,27 @@ namespace Deposito
             stockbajo.Show();
         }
 
-        
+        private void resumenAdministrativoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Bs_Usuario.usuarioActual == 0)
+            {
+                MessageBox.Show("Debe iniciar sesión", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!Bs_Usuario.isAdmin)
+            {
+                MessageBox.Show("No tiene acceso a este módulo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            object valueinput = Interaction.InputBox("Ingrese su contraseña", "Validando", "");
+            if (valueinput.ToString() == Bs_Usuario.password)
+            {
+                FormDashboardAdmin dash = new FormDashboardAdmin();
+                dash.MdiParent = this;
+                dash.Show();
+            }
+        }
     }
 }

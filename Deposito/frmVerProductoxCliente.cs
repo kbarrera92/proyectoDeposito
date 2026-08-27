@@ -31,7 +31,7 @@ namespace Deposito
         private void cargarData()
         {
             DataTable dt = new DataTable();
-            SqlConnection myConn = new SqlConnection(Utils.ConsultaParametro("CS"));
+            SqlConnection myConn = new SqlConnection(Negocio.Utils.ConsultaParametro("CS"));
             myConn.Open();
             SqlCommand myCmd = new SqlCommand("mostrarProdxCliente2", myConn);
             myCmd.CommandType = CommandType.StoredProcedure;
@@ -69,7 +69,7 @@ namespace Deposito
                 try
                 {
                     DataTable dt = new DataTable();
-                    SqlConnection myConn = new SqlConnection(Utils.ConsultaParametro("CS"));
+                    SqlConnection myConn = new SqlConnection(Negocio.Utils.ConsultaParametro("CS"));
                     myConn.Open();
                     SqlCommand myCmd = new SqlCommand("mostrarProdxCliente", myConn);
                     myCmd.CommandType = CommandType.StoredProcedure;
