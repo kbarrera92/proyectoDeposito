@@ -315,6 +315,12 @@
     <Compile Include="frmRepartidores.Designer.cs">
       <DependentUpon>frmRepartidores.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmReporteMovimientos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmReporteMovimientos.Designer.cs">
+      <DependentUpon>FrmReporteMovimientos.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSaldoEnvaseXArea.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -555,6 +561,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRepartidores.resx">
       <DependentUpon>frmRepartidores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmReporteMovimientos.resx">
+      <DependentUpon>FrmReporteMovimientos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSaldoEnvaseXArea.resx">
       <DependentUpon>frmSaldoEnvaseXArea.cs</DependentUpon>

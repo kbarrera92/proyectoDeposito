@@ -467,7 +467,8 @@ namespace Deposito
             object valueinput = Interaction.InputBox("Ingrese su contraseña", "Validando", "");
             if (valueinput.ToString() == Bs_Usuario.password)
             {
-                frmMovimientos movi = new frmMovimientos();
+                //frmMovimientos movi = new frmMovimientos();
+                FrmReporteMovimientos movi = new FrmReporteMovimientos();
                 movi.MdiParent = this;
                 movi.Show();
             }

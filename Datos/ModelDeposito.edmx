@@ -156,6 +156,7 @@
           <Property Name="TOTAL" Type="decimal" Precision="18" Scale="2" />
           <Property Name="SALDO" Type="decimal" Precision="18" Scale="2" />
           <Property Name="COMPRA" Type="bigint" />
+          <Property Name="ESPECIAL" Type="bit" />
         </EntityType>
         <EntityType Name="CXPABONO">
           <Key>
@@ -194,6 +195,7 @@
           <Property Name="DESCRIPCION" Type="varchar" MaxLength="150" />
           <Property Name="TIPO" Type="smallint" />
           <Property Name="IMPORTE" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SALDO" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="NOTAS">
           <Key>
@@ -909,6 +911,7 @@
           <Property Name="COMPRA" Type="Int64" />
           <NavigationProperty Name="COMPRA1" Relationship="Self.FK_CUENTAXPAGAR_COMPRA" FromRole="CUENTAXPAGAR" ToRole="COMPRA" />
           <NavigationProperty Name="CXPABONO" Relationship="Self.FK_CXPABONO_CUENTAXPAGAR" FromRole="CUENTAXPAGAR" ToRole="CXPABONO" />
+          <Property Name="ESPECIAL" Type="Boolean" />
         </EntityType>
         <EntityType Name="CXPABONO">
           <Key>
@@ -951,6 +954,7 @@
           <Property Name="TIPO" Type="Int16" />
           <Property Name="IMPORTE" Type="Decimal" Precision="18" Scale="2" />
           <NavigationProperty Name="TRANSACCION" Relationship="Self.FK_MOVIMIENTO_TRANSACCION" FromRole="MOVIMIENTO" ToRole="TRANSACCION" />
+          <Property Name="SALDO" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="NOTAS">
           <Key>
@@ -1723,6 +1727,7 @@
           <EntitySetMapping Name="CUENTAXPAGAR">
             <EntityTypeMapping TypeName="DEPOSITOModel.CUENTAXPAGAR">
               <MappingFragment StoreEntitySet="CUENTAXPAGAR">
+                <ScalarProperty Name="ESPECIAL" ColumnName="ESPECIAL" />
                 <ScalarProperty Name="IDCUENTA" ColumnName="IDCUENTA" />
                 <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
                 <ScalarProperty Name="TOTAL" ColumnName="TOTAL" />
@@ -1765,6 +1770,7 @@
           <EntitySetMapping Name="MOVIMIENTO">
             <EntityTypeMapping TypeName="DEPOSITOModel.MOVIMIENTO">
               <MappingFragment StoreEntitySet="MOVIMIENTO">
+                <ScalarProperty Name="SALDO" ColumnName="SALDO" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="FECHA" ColumnName="FECHA" />
                 <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />

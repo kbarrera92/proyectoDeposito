@@ -25,6 +25,7 @@ namespace Entidad
         public Nullable<decimal> TOTAL { get; set; }
         public Nullable<decimal> SALDO { get; set; }
         public Nullable<long> COMPRA { get; set; }
+        public Nullable<bool> ESPECIAL { get; set; }
     
         public virtual COMPRA COMPRA1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

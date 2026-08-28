@@ -19,6 +19,7 @@ namespace Entidad
         public string DESCRIPCION { get; set; }
         public Nullable<short> TIPO { get; set; }
         public Nullable<decimal> IMPORTE { get; set; }
+        public Nullable<decimal> SALDO { get; set; }
     
         public virtual TRANSACCION TRANSACCION { get; set; }
     }
