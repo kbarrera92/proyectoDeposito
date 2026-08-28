@@ -15,6 +15,7 @@ namespace Deposito
         private Label lblTotalComprasCap, lblTotalCompras;
         private Label lblTotalSalidasCap, lblTotalSalidas;
         private Label lblSaldoFinalCap, lblSaldoFinal;
+        private Button btnRegistrarMovimiento;
 
         protected override void Dispose(bool disposing)
         {
@@ -39,6 +40,7 @@ namespace Deposito
             this.lblTotalSalidas = new System.Windows.Forms.Label();
             this.lblSaldoFinalCap = new System.Windows.Forms.Label();
             this.lblSaldoFinal = new System.Windows.Forms.Label();
+            this.btnRegistrarMovimiento = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReporte)).BeginInit();
             this.pnlTotales.SuspendLayout();
             this.SuspendLayout();
@@ -193,6 +195,16 @@ namespace Deposito
             this.lblSaldoFinal.TabIndex = 9;
             this.lblSaldoFinal.Text = "0.00";
             // 
+            // btnRegistrarMovimiento
+            // 
+            this.btnRegistrarMovimiento.Location = new System.Drawing.Point(330, 10);
+            this.btnRegistrarMovimiento.Name = "btnRegistrarMovimiento";
+            this.btnRegistrarMovimiento.Size = new System.Drawing.Size(150, 25);
+            this.btnRegistrarMovimiento.TabIndex = 5;
+            this.btnRegistrarMovimiento.Text = "Registrar movimiento";
+            this.btnRegistrarMovimiento.UseVisualStyleBackColor = true;
+            this.btnRegistrarMovimiento.Click += new System.EventHandler(this.btnRegistrarMovimiento_Click);
+            // 
             // FrmReporteMovimientos
             // 
             this.ClientSize = new System.Drawing.Size(784, 480);
@@ -201,6 +213,7 @@ namespace Deposito
             this.Controls.Add(this.btnGenerar);
             this.Controls.Add(this.dgvReporte);
             this.Controls.Add(this.pnlTotales);
+            this.Controls.Add(this.btnRegistrarMovimiento);
             this.Name = "FrmReporteMovimientos";
             this.Text = "Reporte de movimientos";
             this.Load += new System.EventHandler(this.FrmReporteMovimientos_Load);

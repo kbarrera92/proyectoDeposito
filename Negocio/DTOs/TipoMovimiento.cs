@@ -1,6 +1,6 @@
 ﻿namespace Negocio.DTOs
 {
-    enum TipoMovimiento
+    public enum TipoMovimiento
     {
         Entrada = 1,
         Salida = 2,

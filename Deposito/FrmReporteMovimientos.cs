@@ -80,6 +80,11 @@ namespace Deposito
 
         private void btnGenerar_Click(object sender, EventArgs e)
         {
+            GenerarReporte();
+        }
+
+        private void GenerarReporte()
+        {
             try
             {
                 this.Cursor = Cursors.WaitCursor;
@@ -95,6 +100,17 @@ namespace Deposito
             finally
             {
                 this.Cursor = Cursors.Default;
+            }
+        }
+
+        private void btnRegistrarMovimiento_Click(object sender, EventArgs e)
+        {
+            using (var frm = new FrmRegistrarMovimiento())
+            {
+                if (frm.ShowDialog(this) == DialogResult.OK)
+                {
+                    GenerarReporte();
+                }
             }
         }
     }

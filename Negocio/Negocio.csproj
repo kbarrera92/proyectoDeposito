@@ -70,6 +70,7 @@
     <Compile Include="ListaPedidos.cs" />
     <Compile Include="ListaVendidos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\MovimientoRegistroService.cs" />
     <Compile Include="Services\ReporteMovimientosService.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>
