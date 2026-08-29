@@ -287,7 +287,6 @@
             this.lbltotalcompras.Size = new System.Drawing.Size(62, 20);
             this.lbltotalcompras.TabIndex = 3;
             this.lbltotalcompras.Text = "Q 0.00";
-            this.lbltotalcompras.Click += new System.EventHandler(this.label9_Click);
             // 
             // label10
             // 
@@ -359,7 +358,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(666, 608);
             this.panel4.TabIndex = 8;
-            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // buttonGuadarEfectivoReal
             // 

@@ -19,6 +19,7 @@ namespace Entidad
         {
             this.PEDIDO = new HashSet<PEDIDO>();
             this.VENTA = new HashSet<VENTA>();
+            this.BITACORACUADRESDIARIOS = new HashSet<BITACORACUADRESDIARIOS>();
         }
     
         public int ID { get; set; }
@@ -33,5 +34,7 @@ namespace Entidad
         public virtual TIPOUSUARIO TIPOUSUARIO1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VENTA> VENTA { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BITACORACUADRESDIARIOS> BITACORACUADRESDIARIOS { get; set; }
     }
 }

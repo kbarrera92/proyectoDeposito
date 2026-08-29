@@ -2,6 +2,7 @@
 using Negocio;
 using System;
 using System.Data;
+using System.Data.Entity;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -70,19 +71,16 @@ namespace Deposito
             dateTimePicker1.Value = DateTime.Today;
             dateTimePicker2.Value = DateTime.Today;
         }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+               
 
         private void buttonGuadarEfectivoReal_Click(object sender, EventArgs e)
         {
+            if (ValidaCuadreExistente(DateTime.Today.Date))
+            {
+                MessageBox.Show("Ya existe un cuadre de efectivo del día de hoy", "Datos duplicados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             if (!decimal.TryParse(txttotalreal.Text, out decimal decValue) || decimal.Parse(txttotalreal.Text) <= 0m)
             {
                 MessageBox.Show("La cantidad de efectivo no es válida", "Datos incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -116,6 +114,14 @@ namespace Deposito
             catch (Exception)
             {
                 MessageBox.Show("Hubo un error al grabar el registro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private bool ValidaCuadreExistente(DateTime fecha)
+        {
+            using (var db = new DEPOSITOEntities1())
+            {
+                return db.BITACORACUADRESDIARIOS.Any(c => DbFunctions.TruncateTime(c.FECHA) == DbFunctions.TruncateTime(fecha.Date));
             }
         }
     }

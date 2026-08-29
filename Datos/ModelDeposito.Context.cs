@@ -56,5 +56,6 @@ namespace Entidad
         public virtual DbSet<BIT_ABONOSYSALDOS> BIT_ABONOSYSALDOS { get; set; }
         public virtual DbSet<CLIENTE> CLIENTE { get; set; }
         public virtual DbSet<AUTOVENTADETA> AUTOVENTADETA { get; set; }
+        public virtual DbSet<BITACORACUADRESDIARIOS> BITACORACUADRESDIARIOS { get; set; }
     }
 }

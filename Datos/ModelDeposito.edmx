@@ -94,6 +94,15 @@
           <Property Name="PEDIDO" Type="bigint" />
           <Property Name="REPARTIDOR" Type="int" />
         </EntityType>
+        <EntityType Name="BITACORACUADRESDIARIOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FECHA" Type="datetime" Nullable="false" />
+          <Property Name="MONTO" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="USUARIO" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="BITACORAVENTASTRAB">
           <Key>
             <PropertyRef Name="ID" />
@@ -429,6 +438,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_BitacoraCuadres_Usuario">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="BITACORACUADRESDIARIOS" Type="Self.BITACORACUADRESDIARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BITACORACUADRESDIARIOS">
+              <PropertyRef Name="USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CLIENTE_AREAREPARTO">
           <End Role="AREAREPARTO" Type="Self.AREAREPARTO" Multiplicity="0..1" />
           <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
@@ -656,6 +677,7 @@
           <EntitySet Name="AUTOVENTADETA" EntityType="Self.AUTOVENTADETA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AUTOVENTADETA2" EntityType="Self.AUTOVENTADETA2" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BIT_ABONOSYSALDOS" EntityType="Self.BIT_ABONOSYSALDOS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BITACORACUADRESDIARIOS" EntityType="Self.BITACORACUADRESDIARIOS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BITACORAVENTASTRAB" EntityType="Self.BITACORAVENTASTRAB" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="COMPRA" EntityType="Self.COMPRA" Schema="dbo" store:Type="Tables" />
@@ -706,6 +728,10 @@
           <AssociationSet Name="FK_BIT_ABONOSYSALDOS_PEDIDO" Association="Self.FK_BIT_ABONOSYSALDOS_PEDIDO">
             <End Role="PEDIDO" EntitySet="PEDIDO" />
             <End Role="BIT_ABONOSYSALDOS" EntitySet="BIT_ABONOSYSALDOS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BitacoraCuadres_Usuario" Association="Self.FK_BitacoraCuadres_Usuario">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="BITACORACUADRESDIARIOS" EntitySet="BITACORACUADRESDIARIOS" />
           </AssociationSet>
           <AssociationSet Name="FK_CLIENTE_AREAREPARTO" Association="Self.FK_CLIENTE_AREAREPARTO">
             <End Role="AREAREPARTO" EntitySet="AREAREPARTO" />
@@ -1088,6 +1114,7 @@
           <NavigationProperty Name="PEDIDO" Relationship="Self.FK_PEDIDO_USUARIO" FromRole="USUARIO" ToRole="PEDIDO" />
           <NavigationProperty Name="TIPOUSUARIO1" Relationship="Self.FK_USUARIO_TIPOUSUARIO" FromRole="USUARIO" ToRole="TIPOUSUARIO" />
           <NavigationProperty Name="VENTA" Relationship="Self.FK_VENTA_USUARIO" FromRole="USUARIO" ToRole="VENTA" />
+          <NavigationProperty Name="BITACORACUADRESDIARIOS" Relationship="DEPOSITOModel.FK_BitacoraCuadres_Usuario" FromRole="USUARIO" ToRole="BITACORACUADRESDIARIOS" />
         </EntityType>
         <EntityType Name="VENTA">
           <Key>
@@ -1491,6 +1518,11 @@
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
             <End Role="AUTOVENTADETA" EntitySet="AUTOVENTADETA" />
           </AssociationSet>
+          <EntitySet Name="BITACORACUADRESDIARIOS" EntityType="DEPOSITOModel.BITACORACUADRESDIARIOS" />
+          <AssociationSet Name="FK_BitacoraCuadres_Usuario" Association="DEPOSITOModel.FK_BitacoraCuadres_Usuario">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="BITACORACUADRESDIARIOS" EntitySet="BITACORACUADRESDIARIOS" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="BIT_ABONOSYSALDOS">
           <Key>
@@ -1606,6 +1638,28 @@
             </Principal>
             <Dependent Role="AUTOVENTADETA">
               <PropertyRef Name="IDPRODUCTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="BITACORACUADRESDIARIOS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FECHA" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MONTO" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="USUARIO" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="USUARIO1" Relationship="DEPOSITOModel.FK_BitacoraCuadres_Usuario" FromRole="BITACORACUADRESDIARIOS" ToRole="USUARIO" />
+        </EntityType>
+        <Association Name="FK_BitacoraCuadres_Usuario">
+          <End Type="DEPOSITOModel.USUARIO" Role="USUARIO" Multiplicity="1" />
+          <End Type="DEPOSITOModel.BITACORACUADRESDIARIOS" Role="BITACORACUADRESDIARIOS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="BITACORACUADRESDIARIOS">
+              <PropertyRef Name="USUARIO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1976,6 +2030,16 @@
                 <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
                 <ScalarProperty Name="IDPRODUCTO" ColumnName="IDPRODUCTO" />
                 <ScalarProperty Name="IDAUTOVENTA" ColumnName="IDAUTOVENTA" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BITACORACUADRESDIARIOS">
+            <EntityTypeMapping TypeName="DEPOSITOModel.BITACORACUADRESDIARIOS">
+              <MappingFragment StoreEntitySet="BITACORACUADRESDIARIOS">
+                <ScalarProperty Name="USUARIO" ColumnName="USUARIO" />
+                <ScalarProperty Name="MONTO" ColumnName="MONTO" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -61,6 +61,8 @@
         <EntityTypeShape EntityType="DEPOSITOModel.AUTOVENTADETA" Width="1.75" PointX="6" PointY="16" />
         <AssociationConnector Association="DEPOSITOModel.FK_AUTOVENTADETA_AUTOVENTA" />
         <AssociationConnector Association="DEPOSITOModel.FK_AUTOVENTADETA_PRODUCTO" />
+        <EntityTypeShape EntityType="DEPOSITOModel.BITACORACUADRESDIARIOS" Width="1.5" PointX="3.75" PointY="47.75" />
+        <AssociationConnector Association="DEPOSITOModel.FK_BitacoraCuadres_Usuario" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
