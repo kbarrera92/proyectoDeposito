@@ -29,10 +29,10 @@ namespace Deposito
             txtcreditoentradas.Text = string.Format("Q {0:N2}", Negocio.Bs_Efectivo.getcreditohoy(DateTime.Today.Date));
             txttotalsalidas.Text = string.Format("Q {0:N2}", Negocio.Bs_Efectivo.getsalidashoy(DateTime.Today.Date));
             txtventascreditocob.Text = string.Format("Q {0:N2}", Negocio.Bs_Venta.gettotalventascreditopagadas(DateTime.Today.Date));
-            txttotalreal.Text = string.Format("{0:N2}", Negocio.Bs_Efectivo.getefectivohoy(DateTime.Today.Date) - 
+            txttotalreal.Text = string.Format("{0:N2}", Negocio.Bs_Efectivo.getefectivohoy(DateTime.Today.Date) -
                 Negocio.Bs_Efectivo.getsalidashoy(DateTime.Today.Date) + Negocio.Bs_Venta.gettotalventascreditopagadas(DateTime.Today.Date));
 
-            
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -49,7 +49,7 @@ namespace Deposito
             txttotalsalidas.Text = string.Format("Q {0:N2}", Negocio.Bs_Efectivo.getsalidasfechas(dateTimePicker1.Value.Date, dateTimePicker2.Value.Date));
             txtventascreditocob.Text = string.Format("Q {0:N2}", Negocio.Bs_Venta.gettotalventascreditopagadasxfecha(dateTimePicker1.Value.Date, dateTimePicker2.Value.Date));
             txttotalreal.Text = string.Format("{0:N2}", Negocio.Bs_Efectivo.getefectivofechas(dateTimePicker1.Value.Date, dateTimePicker2.Value.Date) -
-                Negocio.Bs_Efectivo.getsalidasfechas(dateTimePicker1.Value.Date, dateTimePicker2.Value.Date) 
+                Negocio.Bs_Efectivo.getsalidasfechas(dateTimePicker1.Value.Date, dateTimePicker2.Value.Date)
                 + Negocio.Bs_Venta.gettotalventascreditopagadasxfecha(dateTimePicker1.Value.Date, dateTimePicker2.Value.Date));
         }
 
@@ -71,7 +71,7 @@ namespace Deposito
             dateTimePicker1.Value = DateTime.Today;
             dateTimePicker2.Value = DateTime.Today;
         }
-               
+
 
         private void buttonGuadarEfectivoReal_Click(object sender, EventArgs e)
         {
@@ -99,16 +99,40 @@ namespace Deposito
 
                     var movimiento = new MOVIMIENTO()
                     {
-                        FECHA = dateTimePicker1.Value.Date,
+                        FECHA = DateTime.Now,
                         DESCRIPCION = $"Efectivo de la fecha {dateTimePicker1.Value.Date}",
                         TIPO = tipoTran,
-                        IMPORTE = decimal.Parse(txttotalreal.Text.Trim())                        
+                        IMPORTE = decimal.Parse(txttotalreal.Text.Trim())
                     };
 
-                    if (Bs_Efectivo.crearNuevoMov(movimiento, new DEPOSITOEntities1()))
+                    using (var ctx = new DEPOSITOEntities1())
                     {
-                        MessageBox.Show("El registro se guardó correctamente", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }                                            
+                        using (var transaction = ctx.Database.BeginTransaction())
+                        {
+
+                        
+                            if (Bs_Efectivo.crearNuevoMov(movimiento, ctx))
+                            {
+                                var bitacora = new BITACORACUADRESDIARIOS
+                                {
+                                    FECHA = DateTime.Now,
+                                    MONTO = movimiento.IMPORTE ?? 0m,
+                                    USUARIO = Bs_Usuario.usuarioActual
+                                };
+
+                                ctx.BITACORACUADRESDIARIOS.Add(bitacora);
+                                ctx.SaveChanges();
+                                transaction.Commit();
+                                MessageBox.Show("El registro se guardó correctamente", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                transaction.Rollback();
+                                MessageBox.Show("Hubo un error al guardar el registro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+
                 }
             }
             catch (Exception)
