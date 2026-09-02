@@ -16,7 +16,7 @@ namespace Negocio.Services
             {
                 return ctx.MOVIMIENTO
                     .Where(m => m.FECHA >= desde)
-                    .OrderBy(m => m.FECHA)
+                    .OrderBy(m => m.ID)
                     .AsEnumerable()
                     .Select(MapearFila)
                     .ToList();
