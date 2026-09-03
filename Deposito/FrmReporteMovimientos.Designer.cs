@@ -340,7 +340,8 @@ namespace Deposito
             this.Controls.Add(this.dgvReporte);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Name = "FrmReporteMovimientos";
-            this.Text = "Reporte de movimientos";          
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Reporte de movimientos";
             this.pnlKpiVentas.ResumeLayout(false);
             this.pnlKpiVentas.PerformLayout();
             this.pnlKpiEntrada.ResumeLayout(false);
