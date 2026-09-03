@@ -118,6 +118,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.listBox1);
             this.Name = "frmHistorialAbonos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Historial por cliente";
             this.Load += new System.EventHandler(this.frmHistorialAbonos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
