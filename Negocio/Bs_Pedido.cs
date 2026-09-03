@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Entidad;
 using System.Windows.Forms;
-using System.Data.Entity.Validation;
 using System.Data.Entity;
 using System.Data;
 using System.Data.SqlClient;
@@ -406,6 +402,28 @@ namespace Negocio
             }
 
             return total;
+        }
+
+        public static long? ObtenerIdPedido(int idAbono)
+        {
+            using (DEPOSITOEntities1 db = new DEPOSITOEntities1())
+            {
+                var abono = db.BIT_ABONOSYSALDOS.FirstOrDefault(a => a.ID == idAbono);
+                if (abono == null) return null;
+
+                if (abono.PEDIDO.HasValue)
+                {
+                    bool existe = db.PEDIDO.Any(p => p.ID == abono.PEDIDO.Value);
+                    if (existe) return abono.PEDIDO.Value;
+                }
+
+                var pedido = db.PEDIDO.FirstOrDefault(p =>
+                    p.CLIENTE == abono.IDCLUENTE &&
+                    p.FECHA == abono.FECHA &&
+                    p.TOTAL == abono.TOTAL);
+
+                return pedido?.ID;
+            }
         }
     }
 }

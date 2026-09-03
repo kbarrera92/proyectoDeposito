@@ -19,6 +19,7 @@ namespace Entidad
         public Nullable<decimal> IMPORTE { get; set; }
         public Nullable<System.DateTime> FECHA { get; set; }
         public string NORECIBO { get; set; }
+        public string TIPO { get; set; }
     
         public virtual CUENTAXPAGAR CUENTAXPAGAR { get; set; }
     }

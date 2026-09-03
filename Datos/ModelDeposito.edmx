@@ -176,6 +176,7 @@
           <Property Name="IMPORTE" Type="decimal" Precision="10" Scale="2" />
           <Property Name="FECHA" Type="date" />
           <Property Name="NORECIBO" Type="varchar" MaxLength="20" />
+          <Property Name="TIPO" Type="char" MaxLength="1" />
         </EntityType>
         <EntityType Name="FORMAPAGO">
           <Key>
@@ -949,6 +950,7 @@
           <Property Name="FECHA" Type="DateTime" Precision="0" />
           <Property Name="NORECIBO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CUENTAXPAGAR" Relationship="Self.FK_CXPABONO_CUENTAXPAGAR" FromRole="CXPABONO" ToRole="CUENTAXPAGAR" />
+          <Property Name="TIPO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
         </EntityType>
         <EntityType Name="FORMAPAGO">
           <Key>
@@ -1793,6 +1795,7 @@
           <EntitySetMapping Name="CXPABONO">
             <EntityTypeMapping TypeName="DEPOSITOModel.CXPABONO">
               <MappingFragment StoreEntitySet="CXPABONO">
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="IDCXP" ColumnName="IDCXP" />
                 <ScalarProperty Name="IMPORTE" ColumnName="IMPORTE" />

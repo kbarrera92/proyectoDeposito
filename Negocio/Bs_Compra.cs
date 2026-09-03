@@ -95,7 +95,7 @@ namespace Negocio
             {
                 using (DEPOSITOEntities1 db = new DEPOSITOEntities1())
                 {
-                    var consulta = db.CXPABONO.Where(x => DbFunctions.TruncateTime(x.FECHA) == hoy).Sum(x => x.IMPORTE);
+                    var consulta = db.CXPABONO.Where(x => DbFunctions.TruncateTime(x.FECHA) == hoy && x.TIPO == "N").Sum(x => x.IMPORTE) ?? 0m;
                     total = Convert.ToDecimal(consulta);
                 }
 
@@ -119,7 +119,9 @@ namespace Negocio
             {
                 using (DEPOSITOEntities1 db = new DEPOSITOEntities1())
                 {
-                    var consulta = db.CXPABONO.Where(x => DbFunctions.TruncateTime(x.FECHA) >= ini && DbFunctions.TruncateTime(x.FECHA) <= fin).Sum(x => x.IMPORTE);
+                    var consulta = db.CXPABONO
+                        .Where(x => DbFunctions.TruncateTime(x.FECHA) >= ini && DbFunctions.TruncateTime(x.FECHA) <= fin && x.TIPO == "N")
+                        .Sum(x => x.IMPORTE ?? 0m);
                     total = Convert.ToDecimal(consulta);
                 }
 
