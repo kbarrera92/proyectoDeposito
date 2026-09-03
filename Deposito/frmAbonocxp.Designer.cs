@@ -40,6 +40,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // txtnocuenta
@@ -117,7 +119,7 @@
             // txtnorecibo
             // 
             this.txtnorecibo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtnorecibo.Location = new System.Drawing.Point(192, 232);
+            this.txtnorecibo.Location = new System.Drawing.Point(192, 270);
             this.txtnorecibo.Name = "txtnorecibo";
             this.txtnorecibo.Size = new System.Drawing.Size(165, 26);
             this.txtnorecibo.TabIndex = 23;
@@ -126,7 +128,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(66, 235);
+            this.label4.Location = new System.Drawing.Point(66, 273);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(120, 20);
             this.label4.TabIndex = 22;
@@ -136,7 +138,7 @@
             // 
             this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(80, 289);
+            this.button1.Location = new System.Drawing.Point(80, 327);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(129, 44);
             this.button1.TabIndex = 24;
@@ -147,7 +149,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(239, 289);
+            this.button2.Location = new System.Drawing.Point(239, 327);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(129, 44);
             this.button2.TabIndex = 25;
@@ -155,11 +157,36 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(138, 227);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(48, 20);
+            this.label5.TabIndex = 26;
+            this.label5.Text = "Tipo:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "N-Normal",
+            "E-Especial"});
+            this.comboBox1.Location = new System.Drawing.Point(192, 227);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(165, 28);
+            this.comboBox1.TabIndex = 27;
+            // 
             // frmAbonocxp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(445, 345);
+            this.ClientSize = new System.Drawing.Size(445, 382);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.txtnorecibo);
@@ -196,5 +223,7 @@
         public System.Windows.Forms.TextBox txtsaldocuenta;
         public System.Windows.Forms.TextBox txtfechaabono;
         public System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

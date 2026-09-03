@@ -267,5 +267,25 @@ namespace Deposito
                 g.DrawString(texto, font, Brushes.Black, x, y);
             }
         }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            int idAbono = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["ID"].Value);
+            long? idPedido = Bs_Pedido.ObtenerIdPedido(idAbono);
+
+            if (idPedido == null)
+            {
+                MessageBox.Show("No se encontró el pedido asociado a este abono.",
+                    "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            using (FormDetallePedido frm = new FormDetallePedido(idPedido.Value))
+            {
+                frm.ShowDialog();
+            }
+        }
     }
 }
