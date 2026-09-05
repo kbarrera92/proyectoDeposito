@@ -232,8 +232,10 @@ namespace Negocio
             {
                 using (DEPOSITOEntities1 db = new DEPOSITOEntities1())
                 {
-                    var consulta = db.AUTOVENTA.Where(x => DbFunctions.TruncateTime(x.FECHA) >= ini && DbFunctions.TruncateTime(x.FECHA) <= fin).Sum(x => x.TOTAL);
-                    total = Convert.ToDecimal(consulta);
+                    var consulta = db.AUTOVENTA
+                        .Where(x => DbFunctions.TruncateTime(x.FECHA) >= ini && DbFunctions.TruncateTime(x.FECHA) <= fin)
+                        .Sum(x => x.TOTAL) ?? 0m;
+                    total = consulta;
                 }
 
 

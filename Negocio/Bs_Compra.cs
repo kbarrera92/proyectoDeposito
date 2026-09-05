@@ -45,7 +45,10 @@ namespace Negocio
             {
                 using (DEPOSITOEntities1 db = new DEPOSITOEntities1())
                 {
-                    var consulta = db.COMPRA.Where(x => DbFunctions.TruncateTime(x.FECHACOMPRA) >= ini && DbFunctions.TruncateTime(x.FECHACOMPRA) <= fin && x.FORMAPAGO == 1 && (x.TIPO == 0 || x.TIPO == null)).Sum(x => x.TOTAL);
+                    var consulta = db.COMPRA
+                        .Where(x => DbFunctions.TruncateTime(x.FECHACOMPRA) >= ini && DbFunctions.TruncateTime(x.FECHACOMPRA) <= fin && x.FORMAPAGO == 1 && (x.TIPO == 0 || x.TIPO == null))
+                        .Sum(x => x.TOTAL) ?? 0m;
+
                     total = Convert.ToDecimal(consulta);
                 }
 
@@ -95,7 +98,9 @@ namespace Negocio
             {
                 using (DEPOSITOEntities1 db = new DEPOSITOEntities1())
                 {
-                    var consulta = db.CXPABONO.Where(x => DbFunctions.TruncateTime(x.FECHA) == hoy && x.TIPO == "N").Sum(x => x.IMPORTE) ?? 0m;
+                    var consulta = db.CXPABONO
+                        .Where(x => DbFunctions.TruncateTime(x.FECHA) == hoy && x.TIPO == "N")
+                        .Sum(x => x.IMPORTE) ?? 0m;
                     total = Convert.ToDecimal(consulta);
                 }
 
@@ -121,7 +126,7 @@ namespace Negocio
                 {
                     var consulta = db.CXPABONO
                         .Where(x => DbFunctions.TruncateTime(x.FECHA) >= ini && DbFunctions.TruncateTime(x.FECHA) <= fin && x.TIPO == "N")
-                        .Sum(x => x.IMPORTE ?? 0m);
+                        .Sum(x => (decimal?)(x.IMPORTE ?? 0m)) ?? 0m;
                     total = Convert.ToDecimal(consulta);
                 }
 
