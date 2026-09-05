@@ -263,7 +263,9 @@ namespace Negocio
             {
                 using (DEPOSITOEntities1 db = new DEPOSITOEntities1())
                 {
-                    var consulta = db.SALIDAEFECTIVO.Where(x => DbFunctions.TruncateTime(x.FECHA) >= ini && DbFunctions.TruncateTime(x.FECHA) <= fin).Select(x => x.IMPORTE).DefaultIfEmpty().Sum();
+                    var consulta = db.SALIDAEFECTIVO
+                        .Where(x => DbFunctions.TruncateTime(x.FECHA) >= ini && DbFunctions.TruncateTime(x.FECHA) <= fin).Select(x => x.IMPORTE).DefaultIfEmpty()
+                        .Sum();
                     total = Convert.ToDecimal(consulta);
                 }
 
@@ -271,7 +273,6 @@ namespace Negocio
             }
             catch (Exception e)
             {
-
                 MessageBox.Show(e.Message);
             }
 

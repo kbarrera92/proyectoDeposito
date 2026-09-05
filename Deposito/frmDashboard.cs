@@ -81,7 +81,7 @@ namespace Deposito
                 return;
             }
 
-            if (!decimal.TryParse(txttotalreal.Text, out decimal decValue) || decimal.Parse(txttotalreal.Text) <= 0m)
+            if (!decimal.TryParse(txttotalreal.Text, out decimal decValue))
             {
                 MessageBox.Show("La cantidad de efectivo no es válida", "Datos incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
