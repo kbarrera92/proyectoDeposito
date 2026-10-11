@@ -1,15 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Windows.Forms;
 using Entidad;
+using Negocio.DTOs;
 using System.Data.Entity;
 
 namespace Negocio
 {
     public class Bs_Compra
     {
-        public static int ncompra { get; set; }
         public static decimal gettotalhoy(DateTime hoy)
         {
             decimal total = 0;
@@ -413,28 +414,37 @@ namespace Negocio
             }
         }
 
-        public static void mostrarcxp(DataGridView dataGrid)
+        public static List<CuentaPagarDTO> obtenercxp()
         {
             using (DEPOSITOEntities1 db = new DEPOSITOEntities1())
             {
-                var consulta = from cxp in db.CUENTAXPAGAR
-                               join compra in db.COMPRA
-                               on cxp.COMPRA equals compra.ID
-                               join prov in db.PROVEEDOR
-                               on compra.PROVEEDOR equals prov.ID
-                               orderby cxp.ESTADO ascending
-                               select new
-                               {
-                                   cxp.IDCUENTA,
-                                   prov.NOMBRE,
-                                   compra.FECHACOMPRA,
-                                   compra.FECHAPAGO,
-                                   cxp.TOTAL,
-                                   cxp.SALDO,
-                                   cxp.ESTADO
-                               };
+                var filas = (from cxp in db.CUENTAXPAGAR
+                             join compra in db.COMPRA
+                             on cxp.COMPRA equals compra.ID
+                             join prov in db.PROVEEDOR
+                             on compra.PROVEEDOR equals prov.ID
+                             select new
+                             {
+                                 cxp.IDCUENTA,
+                                 prov.NOMBRE,
+                                 compra.FECHACOMPRA,
+                                 compra.FECHAPAGO,
+                                 cxp.TOTAL,
+                                 cxp.SALDO
+                             }).ToList();
 
-                dataGrid.DataSource = consulta.ToList();
+                return filas.Select(f => new CuentaPagarDTO
+                {
+                    IdCuenta = f.IDCUENTA,
+                    Proveedor = f.NOMBRE ?? string.Empty,
+                    FechaCompra = f.FECHACOMPRA,
+                    FechaLimite = f.FECHAPAGO,
+                    Total = f.TOTAL ?? 0m,
+                    Saldo = f.SALDO ?? 0m
+                })
+                .OrderBy(c => c.Pagada)
+                .ThenBy(c => c.FechaLimite ?? DateTime.MaxValue)
+                .ToList();
             }
         }
 
@@ -444,37 +454,13 @@ namespace Negocio
             {
                 var consulta = from cxp in db.CXPABONO
                                where cxp.IDCXP == idcuenta
-                               select new                               
+                               orderby cxp.FECHA descending
+                               select new                              
                                {
                                    cxp.ID,
                                    cxp.FECHA,
                                    cxp.IMPORTE,
                                    cxp.NORECIBO
-                               };
-
-                dataGrid.DataSource = consulta.ToList();
-            }
-        }
-
-        public static void filtrarcuentas(DataGridView dataGrid, string nombre)
-        {
-            using (DEPOSITOEntities1 db = new DEPOSITOEntities1())
-            {
-                var consulta = from cxp in db.CUENTAXPAGAR
-                               join compra in db.COMPRA
-                               on cxp.COMPRA equals compra.ID
-                               join prov in db.PROVEEDOR
-                               on compra.PROVEEDOR equals prov.ID
-                               where prov.NOMBRE.Contains(nombre)
-                               select new
-                               {
-                                   cxp.IDCUENTA,
-                                   prov.NOMBRE,
-                                   compra.FECHACOMPRA,
-                                   compra.FECHAPAGO,
-                                   cxp.TOTAL,
-                                   cxp.SALDO,
-                                   cxp.ESTADO
                                };
 
                 dataGrid.DataSource = consulta.ToList();
