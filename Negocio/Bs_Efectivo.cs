@@ -159,7 +159,7 @@ namespace Negocio
                 {
                     var consulta2 = db.COMPRA.Where(x => DbFunctions.TruncateTime(x.FECHACOMPRA) == hoy && x.FORMAPAGO == 1 && (x.TIPO == 0 || x.TIPO == null)).Sum(x => x.TOTAL);
 
-                    var consulta = db.CXPABONO.Where(x => DbFunctions.TruncateTime(x.FECHA) == hoy).Sum(x => x.IMPORTE);
+                    var consulta = db.CXPABONO.Where(x => DbFunctions.TruncateTime(x.FECHA) == hoy && x.TIPO.Equals("N")).Sum(x => x.IMPORTE);
 
                     var consulta1 = db.SALIDAEFECTIVO.Where(x => DbFunctions.TruncateTime(x.FECHA) == hoy).Select(x => x.IMPORTE).DefaultIfEmpty().Sum();
 
@@ -211,7 +211,9 @@ namespace Negocio
                 {
                     var consulta2 = db.COMPRA.Where(x => (DbFunctions.TruncateTime(x.FECHACOMPRA) >= ini && DbFunctions.TruncateTime(x.FECHACOMPRA) <= fin) && x.FORMAPAGO == 1 && (x.TIPO == 0 || x.TIPO == null)).Sum(x => x.TOTAL);
 
-                    var consulta = db.CXPABONO.Where(x => (DbFunctions.TruncateTime(x.FECHA) >= ini && DbFunctions.TruncateTime(x.FECHA) <= fin)).Sum(x => x.IMPORTE);
+                    var consulta = db.CXPABONO
+                        .Where(x => (DbFunctions.TruncateTime(x.FECHA) >= ini && DbFunctions.TruncateTime(x.FECHA) <= fin) && x.TIPO == "N")
+                        .Sum(x => x.IMPORTE);
 
                     var consulta1 = db.SALIDAEFECTIVO.Where(x => (DbFunctions.TruncateTime(x.FECHA) >= ini && DbFunctions.TruncateTime(x.FECHA) <= fin)).Select(x => x.IMPORTE).DefaultIfEmpty().Sum();
 

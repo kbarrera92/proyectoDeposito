@@ -66,7 +66,9 @@ namespace Deposito
             txtefectivo.Text = string.Format("Q {0:N2}", Negocio.Bs_Efectivo.getefectivohoy(DateTime.Today.Date));
             txtcreditoentradas.Text = string.Format("Q {0:N2}", Negocio.Bs_Efectivo.getcreditohoy(DateTime.Today.Date));
             txttotalsalidas.Text = string.Format("Q {0:N2}", Negocio.Bs_Efectivo.getsalidashoy(DateTime.Today.Date));
-            txttotalreal.Text = string.Format("Q {0:N2}", Negocio.Bs_Efectivo.getefectivohoy(DateTime.Today.Date) - Negocio.Bs_Efectivo.getsalidashoy(DateTime.Today.Date));
+            txtventascreditocob.Text = string.Format("Q {0:N2}", Negocio.Bs_Venta.gettotalventascreditopagadas(DateTime.Today.Date));
+            txttotalreal.Text = string.Format("{0:N2}", Negocio.Bs_Efectivo.getefectivohoy(DateTime.Today.Date) -
+                Negocio.Bs_Efectivo.getsalidashoy(DateTime.Today.Date) + Negocio.Bs_Venta.gettotalventascreditopagadas(DateTime.Today.Date));
 
             dateTimePicker1.Value = DateTime.Today;
             dateTimePicker2.Value = DateTime.Today;
@@ -75,9 +77,17 @@ namespace Deposito
 
         private void buttonGuadarEfectivoReal_Click(object sender, EventArgs e)
         {
-            if (ValidaCuadreExistente(DateTime.Today.Date))
+            if (dateTimePicker1.Value.Date != dateTimePicker2.Value.Date)
             {
-                MessageBox.Show("Ya existe un cuadre de efectivo del día de hoy", "Datos duplicados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Seleccione un solo día para guardar el cuadre", "Datos incorrectos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var fechaCuadre = dateTimePicker1.Value.Date;
+
+            if (ValidaCuadreExistente(fechaCuadre))
+            {
+                MessageBox.Show($"Ya existe un cuadre de efectivo del día {fechaCuadre:dd/MM/yyyy}", "Datos duplicados", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -100,7 +110,7 @@ namespace Deposito
                     var movimiento = new MOVIMIENTO()
                     {
                         FECHA = DateTime.Now,
-                        DESCRIPCION = $"Efectivo de la fecha {dateTimePicker1.Value.Date}",
+                        DESCRIPCION = $"Efectivo de la fecha {fechaCuadre:dd/MM/yyyy}",
                         TIPO = tipoTran,
                         IMPORTE = decimal.Parse(txttotalreal.Text.Trim())
                     };
@@ -115,7 +125,7 @@ namespace Deposito
                             {
                                 var bitacora = new BITACORACUADRESDIARIOS
                                 {
-                                    FECHA = DateTime.Now,
+                                    FECHA = fechaCuadre,
                                     MONTO = movimiento.IMPORTE ?? 0m,
                                     USUARIO = Bs_Usuario.usuarioActual
                                 };
