@@ -65,6 +65,7 @@
     <Compile Include="Bs_Utilidad.cs" />
     <Compile Include="Bs_Venta.cs" />
     <Compile Include="DTOs\AbonoImpresion.cs" />
+    <Compile Include="DTOs\CuentaPagarDTO.cs" />
     <Compile Include="DTOs\ProductoStockBajoDTO.cs" />
     <Compile Include="DTOs\ReporteMovimientoRow.cs" />
     <Compile Include="DTOs\TipoMovimiento.cs" />

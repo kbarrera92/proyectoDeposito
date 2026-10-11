@@ -189,9 +189,14 @@ namespace Deposito
                 MessageBox.Show("Debe iniciar sesión", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            frmConfigCapita capital = new frmConfigCapita();
-            capital.MdiParent = this;
-            capital.Show();
+
+            object valueinput = Interaction.InputBox("Ingrese su contraseña", "Validando", "");
+            if (valueinput.ToString() == Bs_Usuario.password)
+            {
+                frmConfigCapita capital = new frmConfigCapita();
+                capital.MdiParent = this;
+                capital.Show();
+            }
         }
 
         private void productosToolStripMenuItem_Click(object sender, EventArgs e)
