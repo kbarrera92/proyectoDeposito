@@ -55,6 +55,7 @@
     <Compile Include="Bs_Autoventa.cs" />
     <Compile Include="Bs_Cliente.cs" />
     <Compile Include="Bs_Compra.cs" />
+    <Compile Include="Bs_ClaveAcceso.cs" />
     <Compile Include="Bs_Efectivo.cs" />
     <Compile Include="Bs_Notas.cs" />
     <Compile Include="Bs_Pedido.cs" />

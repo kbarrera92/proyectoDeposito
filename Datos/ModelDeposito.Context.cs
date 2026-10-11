@@ -57,5 +57,6 @@ namespace Entidad
         public virtual DbSet<CLIENTE> CLIENTE { get; set; }
         public virtual DbSet<AUTOVENTADETA> AUTOVENTADETA { get; set; }
         public virtual DbSet<BITACORACUADRESDIARIOS> BITACORACUADRESDIARIOS { get; set; }
+        public virtual DbSet<PANTALLACLAVE> PANTALLACLAVE { get; set; }
     }
 }

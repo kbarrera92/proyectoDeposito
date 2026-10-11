@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using Negocio;
+﻿using Negocio;
 using System;
 using System.Diagnostics;
 using System.Windows.Forms;
@@ -190,8 +189,7 @@ namespace Deposito
                 return;
             }
 
-            object valueinput = Interaction.InputBox("Ingrese su contraseña", "Validando", "");
-            if (valueinput.ToString() == Bs_Usuario.password)
+            if (SolicitarClave(Bs_ClaveAcceso.CONFIGCAPITAL))
             {
                 frmConfigCapita capital = new frmConfigCapita();
                 capital.MdiParent = this;
@@ -425,8 +423,7 @@ namespace Deposito
                 return;
             }
 
-            object valueinput = Interaction.InputBox("Ingrese su contraseña", "Validando", "");
-            if (valueinput.ToString() == Bs_Usuario.password)
+            if (SolicitarClave(Bs_ClaveAcceso.DASHBOARD))
             {
                 frmDashboard dash = new frmDashboard();
                 dash.MdiParent = this;
@@ -444,8 +441,7 @@ namespace Deposito
                 return;
             }
 
-            object valueinput = Interaction.InputBox("Ingrese su contraseña", "Validando", "");
-            if (valueinput.ToString() == Bs_Usuario.password)
+            if (SolicitarClave(Bs_ClaveAcceso.INVENTARIO))
             {
                 frmInventario inventario = new frmInventario();
                 inventario.MdiParent = this;
@@ -469,8 +465,7 @@ namespace Deposito
                 return;
             }
 
-            object valueinput = Interaction.InputBox("Ingrese su contraseña", "Validando", "");
-            if (valueinput.ToString() == Bs_Usuario.password)
+            if (SolicitarClave(Bs_ClaveAcceso.MOVIMIENTOS))
             {
                 //frmMovimientos movi = new frmMovimientos();
                 FrmReporteMovimientos movi = new FrmReporteMovimientos();
@@ -715,12 +710,41 @@ namespace Deposito
                 return;
             }
 
-            object valueinput = Interaction.InputBox("Ingrese su contraseña", "Validando", "");
-            if (valueinput.ToString() == Bs_Usuario.password)
+            if (SolicitarClave(Bs_ClaveAcceso.DASHBOARDADMIN))
             {
                 FormDashboardAdmin dash = new FormDashboardAdmin();
                 dash.MdiParent = this;
                 dash.Show();
+            }
+        }
+
+        private void contrasenasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Bs_Usuario.usuarioActual == 0)
+            {
+                MessageBox.Show("Debe iniciar sesión", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!Bs_Usuario.isAdmin)
+            {
+                MessageBox.Show("No tiene acceso a este módulo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (SolicitarClave(Bs_ClaveAcceso.CONFIGCLAVES))
+            {
+                frmConfigClaves claves = new frmConfigClaves();
+                claves.MdiParent = this;
+                claves.Show();
+            }
+        }
+
+        private bool SolicitarClave(string pantalla)
+        {
+            using (var dialogo = new frmSolicitarClave(pantalla))
+            {
+                return dialogo.ShowDialog(this) == DialogResult.OK;
             }
         }
     }

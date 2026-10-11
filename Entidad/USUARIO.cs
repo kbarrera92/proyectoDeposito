@@ -28,6 +28,8 @@ namespace Entidad
         public string PASSWORD { get; set; }
         public bool ESTADO { get; set; }
         public Nullable<short> TIPOUSUARIO { get; set; }
+        public string CLAVE1 { get; set; }
+        public string CLAVE2 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PEDIDO> PEDIDO { get; set; }

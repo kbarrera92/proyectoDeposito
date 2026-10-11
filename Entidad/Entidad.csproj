@@ -62,6 +62,7 @@
     <Compile Include="AUTOVENTADETA2.cs">
       <DependentUpon>ModelDeposito.tt</DependentUpon>
     </Compile>
+    <Compile Include="PANTALLACLAVE.cs" />
     <Compile Include="BITACORACUADRESDIARIOS.cs">
       <DependentUpon>ModelDeposito.tt</DependentUpon>
     </Compile>

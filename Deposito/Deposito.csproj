@@ -213,6 +213,18 @@
     <Compile Include="frmCompras.Designer.cs">
       <DependentUpon>frmCompras.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSolicitarClave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSolicitarClave.Designer.cs">
+      <DependentUpon>frmSolicitarClave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConfigClaves.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConfigClaves.Designer.cs">
+      <DependentUpon>frmConfigClaves.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmConfigCapita.cs">
       <SubType>Form</SubType>
     </Compile>

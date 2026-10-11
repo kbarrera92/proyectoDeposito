@@ -215,6 +215,14 @@
           <Property Name="FECHA" Type="date" />
           <Property Name="CUERPO" Type="varchar(max)" />
         </EntityType>
+        <EntityType Name="PANTALLACLAVE">
+          <Key>
+            <PropertyRef Name="PANTALLA" />
+          </Key>
+          <Property Name="PANTALLA" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TIPOCLAVE" Type="smallint" Nullable="false" />
+        </EntityType>
         <EntityType Name="PEDIDO">
           <Key>
             <PropertyRef Name="ID" />
@@ -317,6 +325,8 @@
           <Property Name="PASSWORD" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ESTADO" Type="bit" Nullable="false" />
           <Property Name="TIPOUSUARIO" Type="smallint" />
+          <Property Name="CLAVE1" Type="varchar" MaxLength="50" />
+          <Property Name="CLAVE2" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="VENTA">
           <Key>
@@ -689,6 +699,7 @@
           <EntitySet Name="HISTORIALENVASE" EntityType="Self.HISTORIALENVASE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MOVIMIENTO" EntityType="Self.MOVIMIENTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NOTAS" EntityType="Self.NOTAS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PANTALLACLAVE" EntityType="Self.PANTALLACLAVE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PEDIDO" EntityType="Self.PEDIDO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PEDIDODETA" EntityType="Self.PEDIDODETA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="dbo" store:Type="Tables" />
@@ -1113,6 +1124,8 @@
           <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ESTADO" Type="Boolean" Nullable="false" />
           <Property Name="TIPOUSUARIO" Type="Int16" />
+          <Property Name="CLAVE1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CLAVE2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="PEDIDO" Relationship="Self.FK_PEDIDO_USUARIO" FromRole="USUARIO" ToRole="PEDIDO" />
           <NavigationProperty Name="TIPOUSUARIO1" Relationship="Self.FK_USUARIO_TIPOUSUARIO" FromRole="USUARIO" ToRole="TIPOUSUARIO" />
           <NavigationProperty Name="VENTA" Relationship="Self.FK_VENTA_USUARIO" FromRole="USUARIO" ToRole="VENTA" />
@@ -1520,6 +1533,7 @@
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
             <End Role="AUTOVENTADETA" EntitySet="AUTOVENTADETA" />
           </AssociationSet>
+          <EntitySet Name="PANTALLACLAVE" EntityType="DEPOSITOModel.PANTALLACLAVE" />
           <EntitySet Name="BITACORACUADRESDIARIOS" EntityType="DEPOSITOModel.BITACORACUADRESDIARIOS" />
           <AssociationSet Name="FK_BitacoraCuadres_Usuario" Association="DEPOSITOModel.FK_BitacoraCuadres_Usuario">
             <End Role="USUARIO" EntitySet="USUARIO" />
@@ -1643,6 +1657,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="PANTALLACLAVE">
+          <Key>
+            <PropertyRef Name="PANTALLA" />
+          </Key>
+          <Property Name="PANTALLA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPCION" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TIPOCLAVE" Type="Int16" Nullable="false" />
+        </EntityType>
         <EntityType Name="BITACORACUADRESDIARIOS">
           <Key>
             <PropertyRef Name="ID" />
@@ -1954,6 +1976,8 @@
                 <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
                 <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
                 <ScalarProperty Name="TIPOUSUARIO" ColumnName="TIPOUSUARIO" />
+                <ScalarProperty Name="CLAVE1" ColumnName="CLAVE1" />
+                <ScalarProperty Name="CLAVE2" ColumnName="CLAVE2" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2034,6 +2058,15 @@
                 <ScalarProperty Name="IDPRODUCTO" ColumnName="IDPRODUCTO" />
                 <ScalarProperty Name="IDAUTOVENTA" ColumnName="IDAUTOVENTA" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PANTALLACLAVE">
+            <EntityTypeMapping TypeName="DEPOSITOModel.PANTALLACLAVE">
+              <MappingFragment StoreEntitySet="PANTALLACLAVE">
+                <ScalarProperty Name="TIPOCLAVE" ColumnName="TIPOCLAVE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="PANTALLA" ColumnName="PANTALLA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
