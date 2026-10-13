@@ -94,7 +94,8 @@ Datos/bld/
 Datos/[Bb]in/
 Datos/[Oo]bj/
 Datos/[Ll]og/
-Datos//[Ll]ogs/
+Datos/[Ll]ogs/
+Datos/Scripts/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/

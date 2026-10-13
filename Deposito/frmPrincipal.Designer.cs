@@ -73,6 +73,7 @@
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.calculadoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contrasenasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -438,6 +439,7 @@
             this.toolsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.calculadoraToolStripMenuItem,
             this.optionsToolStripMenuItem,
+            this.contrasenasToolStripMenuItem,
             this.notasToolStripMenuItem});
             this.toolsMenu.Name = "toolsMenu";
             this.toolsMenu.Size = new System.Drawing.Size(116, 24);
@@ -456,9 +458,16 @@
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(159, 24);
             this.optionsToolStripMenuItem.Text = "&Opciones";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
-            // 
+            //
+            // contrasenasToolStripMenuItem
+            //
+            this.contrasenasToolStripMenuItem.Name = "contrasenasToolStripMenuItem";
+            this.contrasenasToolStripMenuItem.Size = new System.Drawing.Size(159, 24);
+            this.contrasenasToolStripMenuItem.Text = "Contraseñas";
+            this.contrasenasToolStripMenuItem.Click += new System.EventHandler(this.contrasenasToolStripMenuItem_Click);
+            //
             // notasToolStripMenuItem
-            // 
+            //
             this.notasToolStripMenuItem.Name = "notasToolStripMenuItem";
             this.notasToolStripMenuItem.Size = new System.Drawing.Size(159, 24);
             this.notasToolStripMenuItem.Text = "Notas";
@@ -779,6 +788,7 @@
         private System.Windows.Forms.ToolStripMenuItem statusBarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolsMenu;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem contrasenasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpMenu;
         private System.Windows.Forms.ToolStripMenuItem indexToolStripMenuItem;
         private System.Windows.Forms.ToolTip toolTip;
